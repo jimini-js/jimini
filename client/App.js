@@ -1,8 +1,8 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Jimini = require('./components/jiminiApp.js');
+import React from 'react';
+import { render } from 'react-dom';
+import Jimini from './components/jiminiApp.js';
 
-ReactDOM.render(
+render(
   <Jimini />,
   document.getElementById('app')
 );
