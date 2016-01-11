@@ -9,7 +9,7 @@ class Wishlist extends React.Component {
           itemname={item.itemname}
           category={item.category}
           message={item.message}
-          link={item.link}
+          url={item.url}
           key={ind} />
       )
     });
