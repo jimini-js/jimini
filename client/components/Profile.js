@@ -13,24 +13,24 @@ class Profile extends React.Component {
           itemname: "Ferrari",
           category: "Big Purchase",
           message: "I will drive this around everyday, thanks!",
-          link: "www.amazon.com"
+          url: "www.amazon.com"
         },
         {
           itemname: "Xbox One",
           category: "Electronics",
           message: "I like games. Please buy me this.",
-          link: "www.newegg.com"
+          url: "www.newegg.com"
         }
       ]
     }
   }
 
-  updateWishlist(){
-    console.log("in updated");
-    // var newWishList = this.state.wishlist.concat([item]);
-    // this.setState({
-    //   wishlist: newWishList
-    // });
+  updateWishlist(item){
+    console.log(item);
+    let newWishList = this.state.wishlist.concat([ item ]);
+    this.setState({
+      wishlist: newWishList
+    });
   }
 
   render(){
@@ -38,7 +38,9 @@ class Profile extends React.Component {
       <div>
         <h1>Logged In Profile Page | Welcome {this.state.username}</h1>
         <div className='row'>
-          <ItemForm updateWishlist={this.updateWishlist}/>
+          <div className='col-md-12'>
+            <ItemForm updateWishlist={this.updateWishlist}/>
+          </div>
         </div>
         <Wishlist wishlist={this.state.wishlist} />
       </div>

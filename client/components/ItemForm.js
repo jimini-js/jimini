@@ -1,41 +1,48 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class ItemForm extends React.Component {
   constructor(){
     super();
-    this.addToWishlist = this.addToWishlist.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      itemname: '',
+      category: '',
+      message: '',
+      url: ''
+    }
   }
 
-  addToWishlist(){
-    console.log("clicked");
-    console.log(this.props);
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.updateWishlist(this.state);
+  }
 
-    this.props.updateWishlist();
+  handleChange(e){
+    console.log(e.target.name);
+    this.setState({[e.target.name]: e.target.value});
   }
 
   render(){
     return (
-      <div className='col-md-12'>
-        <form>
-          <div className='form-group'>
-            <label>Item</label>
-            <input type='text' className='form-control' placeholder='Item Name' value=''/>
-          </div>
-          <div className='form-group'>
-            <label>Category</label>
-            <input type='text' className='form-control' placeholder='Category' />
-          </div>
-          <div className='form-group'>
-            <label>Message</label>
-            <input type='text' className='form-control' placeholder='Message' />
-          </div>
-          <div className='form-group'>
-            <label>Link</label>
-            <input type='url' className='form-control' placeholder='Enter URL Here' />
-          </div>
-          <button type='submit' className='btn btn-primary' onClick={this.addToWishlist}>Submit</button>
-        </form>
-      </div>
+      <form ref='form'>
+          <label>Item</label>
+          <input type='text' name='itemname' onChange={this.handleChange} className='form-control' placeholder='Item Name' />
+        <div className='form-group'>
+          <label>Category</label>
+          <input type='text' name='category' onChange={this.handleChange} className='form-control' placeholder='Category' />
+        </div>
+        <div className='form-group'>
+          <label>Message</label>
+          <input type='text' name='message' onChange={this.handleChange} className='form-control' placeholder='Message' />
+        </div>
+        <div className='form-group'>
+          <label>Link</label>
+          <input type='url' name='url' onChange={this.handleChange} className='form-control' placeholder='Enter URL Here' />
+        </div>
+        <button type='submit' className='btn btn-primary' onClick={this.handleSubmit}>Submit</button>
+      </form>
     )
   }
 }
