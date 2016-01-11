@@ -24244,11 +24244,11 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'container' },
 	          this.props.children
 	        ),
 	        _react2.default.createElement(
-	          'div',
+	          'h1',
 	          null,
 	          'Footer Component'
 	        )
@@ -24277,6 +24277,14 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _Wishlist = __webpack_require__(214);
+	
+	var _Wishlist2 = _interopRequireDefault(_Wishlist);
+	
+	var _ItemForm = __webpack_require__(216);
+	
+	var _ItemForm2 = _interopRequireDefault(_ItemForm);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24291,21 +24299,53 @@
 	  function Profile() {
 	    _classCallCheck(this, Profile);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Profile).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Profile).call(this));
+	
+	    _this.updateWishlist = _this.updateWishlist.bind(_this);
+	    _this.state = {
+	      username: 'Carl',
+	      wishlist: [{
+	        itemname: "Ferrari",
+	        category: "Big Purchase",
+	        message: "I will drive this around everyday, thanks!",
+	        link: "www.amazon.com"
+	      }, {
+	        itemname: "Xbox One",
+	        category: "Electronics",
+	        message: "I like games. Please buy me this.",
+	        link: "www.newegg.com"
+	      }]
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Profile, [{
+	    key: 'updateWishlist',
+	    value: function updateWishlist() {
+	      console.log("in updated");
+	      // var newWishList = this.state.wishlist.concat([item]);
+	      // this.setState({
+	      //   wishlist: newWishList
+	      // });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'Logged In Profile Page'
-	        )
+	          'Logged In Profile Page | Welcome ',
+	          this.state.username
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(_ItemForm2.default, { updateWishlist: this.updateWishlist })
+	        ),
+	        _react2.default.createElement(_Wishlist2.default, { wishlist: this.state.wishlist })
 	      );
 	    }
 	  }]);
@@ -24368,6 +24408,249 @@
 	}(_react2.default.Component);
 	
 	exports.default = PublicProfile;
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Item = __webpack_require__(215);
+	
+	var _Item2 = _interopRequireDefault(_Item);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Wishlist = function (_React$Component) {
+	  _inherits(Wishlist, _React$Component);
+	
+	  function Wishlist() {
+	    _classCallCheck(this, Wishlist);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Wishlist).apply(this, arguments));
+	  }
+	
+	  _createClass(Wishlist, [{
+	    key: 'render',
+	    value: function render() {
+	      var items = this.props.wishlist.map(function (item, ind) {
+	        return _react2.default.createElement(_Item2.default, {
+	          itemname: item.itemname,
+	          category: item.category,
+	          message: item.message,
+	          link: item.link,
+	          key: ind });
+	      });
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        'Wishlist Below:',
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          items
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Wishlist;
+	}(_react2.default.Component);
+	
+	exports.default = Wishlist;
+
+/***/ },
+/* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Item = function (_React$Component) {
+	  _inherits(Item, _React$Component);
+	
+	  function Item() {
+	    _classCallCheck(this, Item);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Item).apply(this, arguments));
+	  }
+	
+	  _createClass(Item, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-md-4' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          this.props.itemname
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.category
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.message
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { href: '{this.props.link}' },
+	          this.props.link
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Item;
+	}(_react2.default.Component);
+	
+	exports.default = Item;
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ItemForm = function (_React$Component) {
+	  _inherits(ItemForm, _React$Component);
+	
+	  function ItemForm() {
+	    _classCallCheck(this, ItemForm);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ItemForm).call(this));
+	
+	    _this.addToWishlist = _this.addToWishlist.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(ItemForm, [{
+	    key: 'addToWishlist',
+	    value: function addToWishlist() {
+	      console.log("clicked");
+	      console.log(this.props);
+	
+	      this.props.updateWishlist();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-md-12' },
+	        _react2.default.createElement(
+	          'form',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Item'
+	            ),
+	            _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Item Name', value: '' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Category'
+	            ),
+	            _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Category' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Message'
+	            ),
+	            _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Message' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Link'
+	            ),
+	            _react2.default.createElement('input', { type: 'url', className: 'form-control', placeholder: 'Enter URL Here' })
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit', className: 'btn btn-primary', onClick: this.addToWishlist },
+	            'Submit'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return ItemForm;
+	}(_react2.default.Component);
+	
+	exports.default = ItemForm;
 
 /***/ }
 /******/ ]);
