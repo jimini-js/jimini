@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Jimini from './components/jiminiApp.js';
+import Home from './components/Home.js';
 
 render(
-  <Jimini />,
+  <Home />,
   document.getElementById('app')
 );

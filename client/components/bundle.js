@@ -59,13 +59,13 @@
 	
 	var _reactDom = __webpack_require__(159);
 	
-	var _jiminiApp = __webpack_require__(160);
+	var _Home = __webpack_require__(161);
 	
-	var _jiminiApp2 = _interopRequireDefault(_jiminiApp);
+	var _Home2 = _interopRequireDefault(_Home);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	(0, _reactDom.render)(_react2.default.createElement(_jiminiApp2.default, null), document.getElementById('app'));
+	(0, _reactDom.render)(_react2.default.createElement(_Home2.default, null), document.getElementById('app'));
 
 /***/ },
 /* 2 */
@@ -19663,7 +19663,8 @@
 
 
 /***/ },
-/* 160 */
+/* 160 */,
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
