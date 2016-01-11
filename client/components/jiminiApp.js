@@ -1,13 +1,13 @@
-var React = require('react');
+import React from 'react';
 
-var Jimini = React.createClass({
-  render: function() {
+class Jimini extends React.Component {
+  render(){
     return (
       <div>
         <h1>Hello Jimini</h1>
       </div>
     )
   }
-});
+}
 
-module.exports = Jimini;
+export default Jimini;
