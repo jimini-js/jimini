@@ -9,9 +9,9 @@ import PublicProfile from './components/PublicProfile.js';
 render((
   <Router>
     <Route path='/' component={Main}>
-      <Route path=':username' component={Profile} />
-      <Route path=':username/wishlist' component={PublicProfile} />
       <IndexRoute component={Home} />
+      <Route path='wishlist' component={Profile} />
+      <Route path='wishlist/:username' component={PublicProfile} />
     </Route>
   </Router>
 ), document.getElementById('app'));
