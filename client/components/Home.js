@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Jimini extends React.Component {
+class Home extends React.Component {
   render(){
     return (
       <div>
@@ -10,4 +10,4 @@ class Jimini extends React.Component {
   }
 }
 
-export default Jimini;
+export default Home;
