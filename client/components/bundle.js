@@ -24246,6 +24246,11 @@
 	          'div',
 	          null,
 	          this.props.children
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          'Footer Component'
 	        )
 	      );
 	    }
