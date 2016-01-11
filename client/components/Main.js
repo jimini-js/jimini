@@ -5,10 +5,10 @@ class Main extends React.Component {
     return (
       <div>
         <h1>Jimini</h1>
-        <div>
+        <div className='container'>
           {this.props.children}
         </div>
-        <div>Footer Component</div>
+        <h1>Footer Component</h1>
       </div>
     )
   }
