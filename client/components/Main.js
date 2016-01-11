@@ -8,6 +8,7 @@ class Main extends React.Component {
         <div>
           {this.props.children}
         </div>
+        <div>Footer Component</div>
       </div>
     )
   }
