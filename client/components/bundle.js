@@ -85,9 +85,9 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: _Main2.default },
-	    _react2.default.createElement(_reactRouter.Route, { path: ':username', component: _Profile2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: ':username/wishlist', component: _PublicProfile2.default }),
-	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default })
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'wishlist', component: _Profile2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'wishlist/:username', component: _PublicProfile2.default })
 	  )
 	), document.getElementById('app'));
 
@@ -24346,18 +24346,13 @@
 	  _createClass(PublicProfile, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(
 	          'h1',
 	          null,
-	          'Public Profile Page'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
+	          'Public Profile Page: ',
 	          this.props.params.username
 	        )
 	      );
