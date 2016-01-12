@@ -4,12 +4,13 @@ import $ from 'jquery';
 class Signup extends React.Component {
   constructor(){
     super();
-    this.getRef = this.getRef.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getUsernameRef = this.getUsernameRef.bind(this);
     this.getPassRef = this.getPassRef.bind(this);
+    this.getEmailRef = this.getEmailRef.bind(this);
   }
 
-  getRef(ref){
+  getUsernameRef(ref){
     this.usernameRef = ref;
   }
 
@@ -17,9 +18,14 @@ class Signup extends React.Component {
     this.passwordRef = ref;
   }
 
+  getEmailRef(ref){
+    this.emailRef = ref;
+  }
+
   handleSubmit(){
     let user = this.usernameRef.value;
     let pw = this.passwordRef.value;
+    let email = this.emailRef.value;
 
     $.ajax({
       url: '/signup',
@@ -28,7 +34,8 @@ class Signup extends React.Component {
       dataType: 'json',
       data: JSON.stringify({
       username: user,
-      password: pw
+      password: pw,
+      email: email
       }),
       success: function(data){
         console.log('post to /signup success');
@@ -38,10 +45,9 @@ class Signup extends React.Component {
       }
     });
 
-    // console.log(username);
-    // console.log(password);
     this.usernameRef.value = '';
     this.passwordRef.value = '';
+    this.emailRef.value = '';
 
   }
 
@@ -51,13 +57,16 @@ class Signup extends React.Component {
         <h1>Jimini Signup</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group col-sm-7">
-            <input type="text" className="form-control" placeholder="Username" ref={this.getRef} />
+            <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />
           </div>
           <div className="form-group col-sm-7">
             <input type="text" className="form-control" placeholder="Password" ref={this.getPassRef} />
           </div>
-          <div className="form-group col-sm-5">
-            <button type="submit" className="btn btn-block btn-primary">Log In</button>
+          <div className="form-group col-sm-7">
+            <input type="text" className="form-control" placeholder="Email" ref={this.getEmailRef} />
+          </div>
+          <div className="form-group col-sm-7">
+            <button type="submit" className="btn btn-block btn-primary">Sign up</button>
           </div>
         </form>
       </div>
