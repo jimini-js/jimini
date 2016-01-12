@@ -17,11 +17,20 @@ mongoose.connect(dbURI);
 var Schema = mongoose.Schema;
 var userSchema = new Schema ({
 	username: { type: String, required: true, unique: true },
-	password: { type: String, required: true }
-	
+	password: { type: String, required: true },
+	address: { type: String }
 });
 userSchema.plugin(uniqueValidator);
 var User = mongoose.model('User', userSchema);
+
+var wishSchema = new Schema({
+  username: String, 
+  category: String,
+  link: String,
+  description: String,
+  purchased: Boolean
+});
+var Wish = mongoose.model('Wish', wishSchema);
 
 
 app.use(function(req, res, next){
@@ -102,6 +111,37 @@ app.post('/login', function(req, res){
 	    	res.send(false);
 	    }
 	});
+});
+
+app.post('/wishlist', function(req, res){
+	var username = req.body.username;
+	var wishname = req.body.wishname;
+	var category = req.body.category;
+	var link = req.body.link;
+	var description = req.body.description;
+	console.log('all info for wish in post request: ', 
+			username,
+			wishname,
+			category,
+			link,
+			description);
+	var wish = Wish({
+		username: username,
+        wishname: wishname,
+        category: category,
+        link: link,
+        description: description
+	});
+
+	wish.save(function(err, wish) {
+		if (err) {
+			console.log("error: ", err);
+		}
+		console.log('wish that was saved:', wish);
+		res.send(wish);
+		res.end();
+	});
+
 });
 
 app.listen(port);
