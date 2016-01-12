@@ -3,11 +3,34 @@ import Signup from './Signup.js';
 import Login from './Login.js';
 
 class Home extends React.Component {
+  constructor(){
+    super();
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      renderLogin: true
+    }
+  }
+
+  handleClick(){
+    let clicked = this.state.renderLogin;
+
+    this.setState({
+      renderLogin: !clicked
+    })
+  }
+
   render(){
+    let signLogin;
+
+    if(this.state.renderLogin){
+      signLogin = <Login handleClick={this.handleClick} />
+    } else {
+      signLogin = <Signup handleClick={this.handleClick} />
+    }
+
     return (
       <div>
-        <Signup />
-        <Login />
+        {signLogin}
       </div>
     )
   }

@@ -46,6 +46,7 @@ class Login extends React.Component {
     return (
       <div className="col-sm-12">
         <h1>Login</h1>
+        <button onClick={this.props.handleClick} className="btn btn-block btn-primary">Need an account, click here to sign up</button>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group col-sm-7">
             <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />
