@@ -1,10 +1,11 @@
 import React from 'react';
+import Signup from './Signup.js';
 
 class Home extends React.Component {
   render(){
     return (
       <div>
-        <h1>HOME PAGE</h1>
+        <Signup />
       </div>
     )
   }
