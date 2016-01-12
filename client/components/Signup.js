@@ -8,6 +8,7 @@ class Signup extends React.Component {
     this.getUsernameRef = this.getUsernameRef.bind(this);
     this.getPassRef = this.getPassRef.bind(this);
     this.getEmailRef = this.getEmailRef.bind(this);
+    this.handleData = this.handleData.bind(this);
   }
 
   getUsernameRef(ref){
@@ -22,10 +23,16 @@ class Signup extends React.Component {
     this.emailRef = ref;
   }
 
+  handleData(action, data){
+    this.props.updateView('showProfile', data);
+  }
+
   handleSubmit(){
     let user = this.usernameRef.value;
     let pw = this.passwordRef.value;
     let email = this.emailRef.value;
+
+    var that = this;
 
     $.ajax({
       url: '/signup',
@@ -39,9 +46,11 @@ class Signup extends React.Component {
       }),
       success: function(data){
         console.log('post to /signup success');
+        that.handleData('showProfile', {username: "cheese", wishlist: []});
       },
       error: function(err){
         console.log('error:', err);
+        that.handleData('showProfile', {username: "cheese", wishlist: []});
       }
     });
 
