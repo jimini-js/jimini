@@ -66,5 +66,43 @@ app.post('/signup', function(req, res) {
 	})
 })
 
+function authenticateUser(username, password, callback){
+  
+  User.findOne({username: username}, function(err, user){
+    if (err) {
+    	console.log('err finding user');
+    }
+    else {
+    	console.log('found user', user)
+    	callback(err, user);	
+    }
+  });
+}
+
+app.post('/login', function(req, res){
+
+	var username = req.body.username;
+	var password = req.body.password;
+	  
+	authenticateUser(username, password, function(err, user){
+	    if (user) {
+	      // req.session.username = user.username;
+	      	bcrypt.compare(password, user.password, function(err, loggedin) {
+	      		if (loggedin) {
+	      			console.log ('you are logged in!');
+	      			res.send(user);
+	      		} else {
+	      			console.log ('wrong username/password!');
+	      			res.send(false);
+	      		}
+	      	})
+	    	
+	    } else {
+	    	console.log('user does not exist');
+	    	res.send(false);
+	    }
+	});
+});
+
 app.listen(port);
 console.log('Listening on port ' + port + '...');
