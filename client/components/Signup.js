@@ -54,7 +54,7 @@ class Signup extends React.Component {
   render(){
     return (
       <div className="col-sm-12">
-        <h1>Jimini Signup</h1>
+        <h1>Sign up</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group col-sm-7">
             <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />
