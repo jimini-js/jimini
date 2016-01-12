@@ -17,6 +17,27 @@ class ItemForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.updateWishlist(this.state);
+
+    $.ajax({
+      url: '/wishlist',
+      type: 'POST',
+      contentType: 'application/json',
+      dataType:'json',
+      data: JSON.stringify({
+      username: username,
+      wishname: wishname,
+      category: category,
+      link: link,
+      description: description
+      }),
+      success: function(data){
+      console.log('post to /wishlist success');
+      console.log('data from server: ',data);
+      },
+      error: function(err){
+      console.log('error posting to wishlist: ', err);
+      }
+   });
   }
 
   handleChange(e){
