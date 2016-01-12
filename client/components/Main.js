@@ -36,7 +36,6 @@ class Main extends React.Component {
         self.setState({showPublicProfile: false});
         self.setState({userInfo: { username: data.username }});
         console.log("new user info", this.state.userInfo);
-        break;
       case 'showPublicProfile':
         self.setState({showHome: false});
         self.setState({showProfile: false});
@@ -51,6 +50,7 @@ class Main extends React.Component {
       <div>
         <h1>Jimini</h1>
         <div className='container'>
+<<<<<<< 4c47609a9078018656b9b3674d5658f742d6f39e
 <<<<<<< c68fce25f601f527b577d7f030779f6130277aeb
           {this.state.showHome ? <Home updateView={this.updateView} /> : null}
           {this.state.showProfile ? <Profile updateView={this.updateView} userInfo={this.state.userInfo} /> : null}
@@ -60,6 +60,11 @@ class Main extends React.Component {
           {this.state.showProfile ? <Profile updateView={this.state.updateView} userInfo={this.state.userInfo} /> : null}
           {this.state.showPublicProfile ? <PublicProfile updateView={this.state.updateView} /> : null}
 >>>>>>> [refactor] refactors routing for views on Main component
+=======
+          {this.state.showHome ? <Home updateView={this.updateView} /> : null}
+          {this.state.showProfile ? <Profile updateView={this.updateView} userInfo={this.state.userInfo} /> : null}
+          {this.state.showPublicProfile ? <PublicProfile updateView={this.updateView} /> : null}
+>>>>>>> [feat] implements successful rerouting from login/signup to profile with data
         </div>
         <div>
           <Footer />
