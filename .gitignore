@@ -4,3 +4,6 @@ node_modules/
 #Bundle
 client/components/bundle.js
 client/components/bundle.js.map
+
+#Other
+.DS_Store
