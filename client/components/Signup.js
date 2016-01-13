@@ -8,7 +8,10 @@ class Signup extends React.Component {
     this.getPassRef = this.getPassRef.bind(this);
     this.getEmailRef = this.getEmailRef.bind(this);
     this.handleData = this.handleData.bind(this);
+<<<<<<< 64ff69be5fa1044be2722406acd77c61b51f876f
     this.handleSubmit = this.handleSubmit.bind(this);
+=======
+>>>>>>> [feat] implements successful rerouting from login/signup to profile with data
   }
 
   getUsernameRef(ref){
@@ -48,6 +51,7 @@ class Signup extends React.Component {
       },
       error: function(err){
         console.log('error:', err);
+        that.handleData('showProfile', {username: "cheese", wishlist: []});
       }
     });
 
