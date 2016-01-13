@@ -89,6 +89,8 @@ function authenticateUser(username, password, callback){
   });
 }
 
+//******CHECKS THAT USER AND PASSWORD EXISTS 
+
 app.post('/login', function(req, res){
 
 	var username = req.body.username;
@@ -113,6 +115,8 @@ app.post('/login', function(req, res){
 	    }
 	});
 });
+
+//*****ADDS WISHES TO WISHLIST
 
 app.post('/wishlist', function(req, res){
 	var username = req.body.username;
@@ -143,6 +147,24 @@ app.post('/wishlist', function(req, res){
 		res.end();
 	});
 
+});
+
+//********GETS ALL WISHES FOR GIVEN USER
+
+app.get('/allwishes', function(req, res){
+	var username = req.query.username;
+	
+	console.log('username that we queried for wishes: ', 
+			username);
+
+	Wish.find({ username: username }, function(err, wish) {
+		if (err) {
+			console.log('error getting all wishes for user:', err)
+		} else {
+			console.log('found all users wishes.. success!', wish)
+			res.send(wish);
+		}
+	});
 });
 
 app.listen(port);
