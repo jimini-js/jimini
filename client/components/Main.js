@@ -15,7 +15,6 @@ class Main extends React.Component {
       showPublicProfile: false,
       userInfo: {
         username: '',
-        wishlist: []
       }
     }
   }
@@ -35,7 +34,7 @@ class Main extends React.Component {
         self.setState({showHome: false});
         self.setState({showProfile: true});
         self.setState({showPublicProfile: false});
-        self.setState({userInfo: data});
+        self.setState({userInfo: { username: data.username}});
         console.log("new user info", this.state.userInfo);
         break;
       case 'showPublicProfile':
