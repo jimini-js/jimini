@@ -31,14 +31,12 @@ class Signup extends React.Component {
     let user = this.usernameRef.value;
     let pw = this.passwordRef.value;
     let email = this.emailRef.value;
-
-    var that = this;
+    let self = this;
 
     $.ajax({
       url: '/signup',
       type: 'POST',
       contentType: 'application/json',
-      dataType: 'json',
       data: JSON.stringify({
       username: user,
       password: pw,
@@ -46,11 +44,10 @@ class Signup extends React.Component {
       }),
       success: function(data){
         console.log('post to /signup success');
-        that.handleData('showProfile', {username: "cheese", wishlist: []});
+        self.handleData('showProfile', data);
       },
       error: function(err){
         console.log('error:', err);
-        that.handleData('showProfile', {username: "cheese", wishlist: []});
       }
     });
 
