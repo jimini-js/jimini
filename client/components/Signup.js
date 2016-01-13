@@ -44,8 +44,6 @@ class Signup extends React.Component {
       email: email
       }),
       success: function(data){
-        console.log('post to /signup success');
-        console.log("rep data", data);
         if(data.name === 'ValidationError'){
           self.handleData('showHome');
         } else {
