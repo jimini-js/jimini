@@ -38,7 +38,7 @@ class ItemForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.updateWishlist(this.state);
-    let username = this.props.userInfo;
+    let username = this.props.userInfo.username;
     let itemname = this.itemnameRef.value;
     let category = this.categoryRef.value;
     let url = this.urlRef.value;

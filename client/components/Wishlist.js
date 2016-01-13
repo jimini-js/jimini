@@ -2,14 +2,27 @@ import React from 'react';
 import Item from './Item.js';
 
 class Wishlist extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      wishlist: []
+    }
+  }
+  componentWillReceiveProps(nextProps){
+    console.log("nextprops", nextProps);
+    this.setState({
+      wishlist: nextProps.wishlist
+    });
+  }
+
   render(){
-    let items = this.props.wishlist.map((item, ind) => {
+    let items = this.state.wishlist.map((item, ind) => {
       return (
         <Item
-          itemname={item.itemname}
+          itemname={item.description}
           category={item.category}
-          message={item.message}
-          url={item.url}
+          message={item.description}
+          url={item.link}
           key={ind} />
       )
     });

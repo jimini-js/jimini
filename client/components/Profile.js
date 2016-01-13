@@ -27,6 +27,7 @@ class Profile extends React.Component {
         username: self.props.userInfo.username
       },
       success: function(data){
+        console.log(data);
         self.setState({
           username: self.props.userInfo.username,
           wishlist: data
@@ -36,6 +37,8 @@ class Profile extends React.Component {
         console.log('error:', err);
       }
     });
+
+    console.log("after ajax", this.state);
 
   }
 
