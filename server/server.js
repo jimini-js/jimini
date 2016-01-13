@@ -24,7 +24,7 @@ userSchema.plugin(uniqueValidator);
 var User = mongoose.model('User', userSchema);
 
 var wishSchema = new Schema({
-  username: String, 
+  username: String,
   category: String,
   link: String,
   description: String,
@@ -66,6 +66,7 @@ app.post('/signup', function(req, res) {
 			user.save(function(err, user) {
 				if (err) {
 					console.log("error: ", err);
+					res.send(err);
 				}
 
 				console.log('user that was saved:', user);
@@ -77,25 +78,25 @@ app.post('/signup', function(req, res) {
 })
 
 function authenticateUser(username, password, callback){
-  
+
   User.findOne({username: username}, function(err, user){
     if (err) {
     	console.log('err finding user');
     }
     else {
     	console.log('found user', user)
-    	callback(err, user);	
+    	callback(err, user);
     }
   });
 }
 
-//******CHECKS THAT USER AND PASSWORD EXISTS 
+//******CHECKS THAT USER AND PASSWORD EXISTS
 
 app.post('/login', function(req, res){
 
 	var username = req.body.username;
 	var password = req.body.password;
-	  
+
 	authenticateUser(username, password, function(err, user){
 	    if (user) {
 	      // req.session.username = user.username;
@@ -105,13 +106,13 @@ app.post('/login', function(req, res){
 	      			res.send(user);
 	      		} else {
 	      			console.log ('wrong username/password!');
-	      			res.send(false);
+	      			res.send('InvalidPassword');
 	      		}
 	      	})
-	    	
+
 	    } else {
 	    	console.log('user does not exist');
-	    	res.send(false);
+	    	res.send('InvalidUser');
 	    }
 	});
 });
@@ -124,7 +125,7 @@ app.post('/wishlist', function(req, res){
 	var category = req.body.category;
 	var link = req.body.link;
 	var description = req.body.description;
-	console.log('all info for wish in post request: ', 
+	console.log('all info for wish in post request: ',
 			username,
 			wishname,
 			category,
@@ -153,8 +154,8 @@ app.post('/wishlist', function(req, res){
 
 app.get('/allwishes', function(req, res){
 	var username = req.query.username;
-	
-	console.log('username that we queried for wishes: ', 
+
+	console.log('username that we queried for wishes: ',
 			username);
 
 	Wish.find({ username: username }, function(err, wish) {

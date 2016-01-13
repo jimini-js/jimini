@@ -24,10 +24,11 @@ class Signup extends React.Component {
   }
 
   handleData(action, data){
-    this.props.updateView('showProfile', data);
+    this.props.updateView(action, data);
   }
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     let user = this.usernameRef.value;
     let pw = this.passwordRef.value;
     let email = this.emailRef.value;
@@ -43,8 +44,11 @@ class Signup extends React.Component {
       email: email
       }),
       success: function(data){
-        console.log('post to /signup success');
-        self.handleData('showProfile', data);
+        if(data.name === 'ValidationError'){
+          self.handleData('showHome');
+        } else {
+          self.handleData('showProfile', data);
+        }
       },
       error: function(err){
         console.log('error:', err);
