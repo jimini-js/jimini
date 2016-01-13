@@ -31,7 +31,6 @@ class Profile extends React.Component {
           username: self.props.userInfo.username,
           wishlist: data
         });
-        console.log("in success", data);
       },
       error: function(err){
         console.log('error:', err);
