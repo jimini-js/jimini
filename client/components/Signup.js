@@ -27,7 +27,8 @@ class Signup extends React.Component {
     this.props.updateView('showProfile', data);
   }
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     let user = this.usernameRef.value;
     let pw = this.passwordRef.value;
     let email = this.emailRef.value;
