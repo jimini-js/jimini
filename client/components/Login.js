@@ -19,7 +19,7 @@ class Login extends React.Component {
   }
 
   handleData(action, data){
-    this.props.updateView('showProfile', data);
+    this.props.updateView(action, data);
   }
 
   handleSubmit(e){
@@ -39,7 +39,11 @@ class Login extends React.Component {
       }),
       success: function(data){
         console.log('post to /login success');
-        self.handleData('showProfile', data);
+        if(data.responseText === 'InvalidPassword' || data.responseText === 'InvalidPassword'){
+          self.handleData('showHome');
+        } else {
+          self.handleData('showProfile', data);
+        }
       },
       error: function(err){
         console.log('error:', err);

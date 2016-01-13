@@ -106,13 +106,13 @@ app.post('/login', function(req, res){
 	      			res.send(user);
 	      		} else {
 	      			console.log ('wrong username/password!');
-	      			res.send(false);
+	      			res.send('InvalidPassword');
 	      		}
 	      	})
 
 	    } else {
 	    	console.log('user does not exist');
-	    	res.send(false);
+	    	res.send('InvalidUser');
 	    }
 	});
 });
