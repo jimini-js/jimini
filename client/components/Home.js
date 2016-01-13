@@ -23,9 +23,9 @@ class Home extends React.Component {
     let signLogin;
 
     if(this.state.renderLogin){
-      signLogin = <Login handleClick={this.handleClick} />
+      signLogin = <Login updateView={this.props.updateView} handleClick={this.handleClick} />
     } else {
-      signLogin = <Signup handleClick={this.handleClick} />
+      signLogin = <Signup updateView={this.props.updateView} handleClick={this.handleClick} />
     }
 
     return (

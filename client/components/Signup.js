@@ -4,10 +4,11 @@ import $ from 'jquery';
 class Signup extends React.Component {
   constructor(){
     super();
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.getUsernameRef = this.getUsernameRef.bind(this);
     this.getPassRef = this.getPassRef.bind(this);
     this.getEmailRef = this.getEmailRef.bind(this);
+    this.handleData = this.handleData.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getUsernameRef(ref){
@@ -22,16 +23,20 @@ class Signup extends React.Component {
     this.emailRef = ref;
   }
 
+  handleData(action, data){
+    this.props.updateView('showProfile', data);
+  }
+
   handleSubmit(){
     let user = this.usernameRef.value;
     let pw = this.passwordRef.value;
     let email = this.emailRef.value;
+    let self = this;
 
     $.ajax({
       url: '/signup',
       type: 'POST',
       contentType: 'application/json',
-      dataType: 'json',
       data: JSON.stringify({
       username: user,
       password: pw,
@@ -39,6 +44,7 @@ class Signup extends React.Component {
       }),
       success: function(data){
         console.log('post to /signup success');
+        self.handleData('showProfile', data);
       },
       error: function(err){
         console.log('error:', err);

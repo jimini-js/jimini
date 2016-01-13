@@ -36,7 +36,7 @@ class Profile extends React.Component {
   render(){
     return (
       <div>
-        <h1>Logged In Profile Page | Welcome {this.state.username}</h1>
+        <h1>Logged In Profile Page | Welcome {this.props.userInfo.username}</h1>
         <div className='row'>
           <div className='col-md-12'>
             <ItemForm updateWishlist={this.updateWishlist}/>
