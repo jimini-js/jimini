@@ -30,6 +30,7 @@ class Main extends React.Component {
         self.setState({userInfo: {username: '', wishlist: []}});
         break;
       case 'showProfile':
+        // TODO:  implement error handling if not valid >> render error page
         self.setState({isLoggedIn: true});
         self.setState({showHome: false});
         self.setState({showProfile: true});
