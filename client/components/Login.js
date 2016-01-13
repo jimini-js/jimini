@@ -22,7 +22,8 @@ class Login extends React.Component {
     this.props.updateView('showProfile', data);
   }
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     let user = this.usernameRef.value;
     let pw = this.passwordRef.value;
     let self = this;
