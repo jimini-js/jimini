@@ -7,16 +7,16 @@ class ItemForm extends React.Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.getItemnameRef = this.getItemnameRef.bind(this);
+    this.getCategoryRef = this.getCategoryRef.bind(this);
+    this.getMessageRef = this.getMessageRef.bind(this);
+    this.getUrlRef = this.getUrlRef.bind(this);
     this.state = {
       itemname: '',
       category: '',
       message: '',
       url: ''
     }
-    this.getItemnameRef = this.getItemnameRef.bind(this);
-    this.getCategoryRef = this.getCategoryRef.bind(this);
-    this.getMessageRef = this.getMessageRef.bind(this);
-    this.getUrlRef = this.getUrlRef.bind(this);
   }
 
   getItemnameRef(ref){
@@ -36,10 +36,9 @@ class ItemForm extends React.Component {
   }
 
   handleSubmit(e){
-    console.log('inside handleSubmit ');
     e.preventDefault();
     this.props.updateWishlist(this.state);
-    let username = 'charles';
+    let username = this.props.userInfo.username;
     let itemname = this.itemnameRef.value;
     let category = this.categoryRef.value;
     let url = this.urlRef.value;
@@ -59,7 +58,7 @@ class ItemForm extends React.Component {
       }),
       success: function(data){
         console.log('post to /wishlist success');
-        console.log('data from server: ',data);
+        console.log('data from server: ', data);
       },
       error: function(err){
         console.log('error posting to wishlist: ', err);
@@ -73,7 +72,6 @@ class ItemForm extends React.Component {
   }
 
   handleChange(e){
-    console.log(e.target.name);
     this.setState({[e.target.name]: e.target.value});
   }
 
