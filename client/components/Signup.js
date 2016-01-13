@@ -4,11 +4,11 @@ import $ from 'jquery';
 class Signup extends React.Component {
   constructor(){
     super();
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.getUsernameRef = this.getUsernameRef.bind(this);
     this.getPassRef = this.getPassRef.bind(this);
     this.getEmailRef = this.getEmailRef.bind(this);
     this.handleData = this.handleData.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getUsernameRef(ref){
