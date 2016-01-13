@@ -51,7 +51,6 @@ class Signup extends React.Component {
       },
       error: function(err){
         console.log('error:', err);
-        that.handleData('showProfile', {username: "cheese", wishlist: []});
       }
     });
 
