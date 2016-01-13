@@ -25,6 +25,7 @@ var User = mongoose.model('User', userSchema);
 
 var wishSchema = new Schema({
   username: String,
+  wishname: String,
   category: String,
   link: String,
   description: String,

@@ -19,7 +19,7 @@ class Wishlist extends React.Component {
     let items = this.state.wishlist.map((item, ind) => {
       return (
         <Item
-          itemname={item.description}
+          itemname={item.wishname}
           category={item.category}
           message={item.description}
           url={item.link}
