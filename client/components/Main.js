@@ -37,6 +37,7 @@ class Main extends React.Component {
         self.setState({showPublicProfile: false});
         self.setState({userInfo: data});
         console.log("new user info", this.state.userInfo);
+        break;
       case 'showPublicProfile':
         self.setState({showHome: false});
         self.setState({showProfile: false});
