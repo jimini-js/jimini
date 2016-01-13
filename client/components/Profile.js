@@ -8,18 +8,30 @@ class Profile extends React.Component {
     super();
     this.updateWishlist = this.updateWishlist.bind(this);
     this.state = {
-      username: 'carl',
+      username: '',
       wishlist: []
     }
   }
 
   componentDidMount(){
+    let self = this;
+
+    this.setState({
+      username: this.props.userInfo.username
+    });
+
     $.ajax({
       url: '/allwishes',
       type: 'GET',
-      contentType: 'application/json',
+      data: {
+        username: this.state.username
+      },
       success: function(data){
-        console.log('GET wish success', data);
+        self.setState({
+          username: self.props.userInfo.username,
+          wishlist: data
+        });
+        console.log("in success", data);
       },
       error: function(err){
         console.log('error:', err);
