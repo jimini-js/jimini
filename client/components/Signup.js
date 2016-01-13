@@ -33,6 +33,8 @@ class Signup extends React.Component {
     let email = this.emailRef.value;
     let self = this;
 
+    var that = this;
+
     $.ajax({
       url: '/signup',
       type: 'POST',
