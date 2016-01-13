@@ -69,6 +69,7 @@ app.post('/signup', function(req, res) {
 				}
 
 				console.log('user that was saved:', user);
+				res.send(user);
 			});
 
 		});
