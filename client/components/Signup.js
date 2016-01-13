@@ -24,7 +24,7 @@ class Signup extends React.Component {
   }
 
   handleData(action, data){
-    this.props.updateView('showProfile', data);
+    this.props.updateView(action, data);
   }
 
   handleSubmit(e){
@@ -45,7 +45,12 @@ class Signup extends React.Component {
       }),
       success: function(data){
         console.log('post to /signup success');
-        self.handleData('showProfile', data);
+        console.log("rep data", data);
+        if(data.name === 'ValidationError'){
+          self.handleData('showHome');
+        } else {
+          self.handleData('showProfile', data);
+        }
       },
       error: function(err){
         console.log('error:', err);
