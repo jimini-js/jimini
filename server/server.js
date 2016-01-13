@@ -149,7 +149,7 @@ app.post('/wishlist', function(req, res){
 
 });
 
-//********GETS ALL WISHES FOR GIVEN USER
+//*********GETS ALL WISHES FOR GIVEN USER
 
 app.get('/allwishes', function(req, res){
 	var username = req.query.username;
