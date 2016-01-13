@@ -7,24 +7,24 @@ class Profile extends React.Component {
   constructor(){
     super();
     this.updateWishlist = this.updateWishlist.bind(this);
+    this.fetchData = this.fetchData.bind(this);
     this.state = {
       username: '',
       wishlist: []
     }
   }
 
-  componentDidMount(){
+  fetchData(){
     let self = this;
 
-    this.setState({
-      username: this.props.userInfo.username
-    });
+    console.log("inside fetch data");
+    console.log("state", this.state);
 
     $.ajax({
       url: '/allwishes',
       type: 'GET',
       data: {
-        username: this.state.username
+        username: self.props.userInfo.username
       },
       success: function(data){
         self.setState({
@@ -36,6 +36,19 @@ class Profile extends React.Component {
         console.log('error:', err);
       }
     });
+
+  }
+
+  componentDidMount(){
+    // let self = this;
+    // let query = this.props.userInfo.username;
+    // console.log(typeof query);
+
+    // this.setState({
+    //   username: this.props.userInfo.username
+    // });
+
+    setTimeout(this.fetchData, 3);
   }
 
   updateWishlist(item){
@@ -52,7 +65,7 @@ class Profile extends React.Component {
         <h1>Logged In Profile Page | Welcome {this.state.username}</h1>
         <div className='row'>
           <div className='col-md-12'>
-            <ItemForm updateWishlist={this.updateWishlist}/>
+            <ItemForm userInfo={this.props.userInfo} updateWishlist={this.updateWishlist}/>
           </div>
         </div>
         <Wishlist wishlist={this.state.wishlist} />
