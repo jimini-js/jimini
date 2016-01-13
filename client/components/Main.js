@@ -52,9 +52,9 @@ class Main extends React.Component {
       <div>
         <h1>Jimini</h1>
         <div className='container'>
-          {this.state.showHome ? <Home updateView={this.updateView} /> : null}
-          {this.state.showProfile ? <Profile updateView={this.updateView} userInfo={this.state.userInfo} /> : null}
-          {this.state.showPublicProfile ? <PublicProfile updateView={this.updateView} /> : null}
+          {this.state.showHome ? <Home updateView={this.state.updateView} /> : null}
+          {this.state.showProfile ? <Profile updateView={this.state.updateView} userInfo={this.state.userInfo} /> : null}
+          {this.state.showPublicProfile ? <PublicProfile updateView={this.state.updateView} /> : null}
         </div>
         <div>
           <Footer />
