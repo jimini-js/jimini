@@ -28,7 +28,14 @@ class Home extends React.Component {
 
     return (
       <div>
-        {viewBox}
+        <form>
+          <label>Find a Wishlist</label>&nbsp;
+          <input type="text" placeholder="Enter a Name" />&nbsp;
+          <button type='submit' className='btn btn-primary' onClick={this.handleSubmit}>Search</button>
+        </form>
+        <div>
+          {viewBox}
+        </div>
       </div>
     )
   }
