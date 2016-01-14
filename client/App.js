@@ -11,6 +11,7 @@ render((
     <Route path='/' component={Main}>
       <IndexRoute component={Home} />
     </Route>
-    <Route path='wishlist' component={PublicProfile} />
+    <Route path='/search' component={PublicProfile} />
+    <Route path='/:username' component={PublicProfile} />
   </Router>
 ), document.getElementById('app'));
