@@ -13,13 +13,19 @@ class Item extends React.Component {
   }
 
   render(){
+    let removeButton;
+
+    if(this.props.isLoggedIn){
+      removeButton = (<button type='button' className='btn btn-info' onClick={this.handleRemove}>Remove Item</button>);
+    }
+
     return (
       <div className='col-md-4'>
         <h3>{this.props.itemname}</h3>
         <p>{this.props.category}</p>
         <p>{this.props.message}</p>
         <a href={this.props.url}>{this.props.url}</a>
-        <button type='button' className='btn btn-info' onClick={this.handleRemove}>Remove Item</button>
+        {removeButton}
       </div>
     )
   }

@@ -57,7 +57,7 @@ class Profile extends React.Component {
             <ItemForm userInfo={this.props.userInfo} updateWishlist={this.updateWishlist}/>
           </div>
         </div>
-        <Wishlist wishlist={this.state.wishlist} />
+        <Wishlist wishlist={this.state.wishlist} isLoggedIn={this.props.isLoggedIn} />
       </div>
     )
   }
