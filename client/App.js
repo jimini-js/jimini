@@ -10,8 +10,7 @@ render((
   <Router>
     <Route path='/' component={Main}>
       <IndexRoute component={Home} />
-      <Route path='wishlist' component={Profile} />
-      <Route path='wishlist/:username' component={PublicProfile} />
     </Route>
+    <Route path='wishlist' component={PublicProfile} />
   </Router>
 ), document.getElementById('app'));
