@@ -28,11 +28,13 @@ class Profile extends React.Component {
           username: self.props.userInfo.username,
           wishlist: data
         });
+        console.log("WISHLIST DATA:", self.state.wishlist);
       },
       error: function(err){
         console.log('error:', err);
       }
     });
+
   }
 
   componentDidMount(){
