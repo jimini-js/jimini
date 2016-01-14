@@ -58,7 +58,6 @@ class Signup extends React.Component {
     this.usernameRef.value = '';
     this.passwordRef.value = '';
     this.emailRef.value = '';
-
   }
 
   render(){
@@ -66,7 +65,7 @@ class Signup extends React.Component {
     return (
       <div className="col-sm-12">
         <h1>Sign up</h1>
-        <button onClick={this.props.handleClick} className="btn btn-block btn-primary">Already have an account, click here to log in</button>
+        <button onClick={this.props.handleClick} className="btn btn-block btn-primary">Have an account? Click here to log in.</button>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group col-sm-7">
             <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />

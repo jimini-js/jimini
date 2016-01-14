@@ -21,6 +21,7 @@ class Main extends React.Component {
 
   updateView(action, data){
     let self = this;
+
     switch(action){
       case 'showHome':
         self.setState({isLoggedIn: false});
@@ -30,13 +31,11 @@ class Main extends React.Component {
         self.setState({userInfo: {username: '', wishlist: []}});
         break;
       case 'showProfile':
-        // TODO:  implement error handling if not valid >> render error page
         self.setState({isLoggedIn: true});
         self.setState({showHome: false});
         self.setState({showProfile: true});
         self.setState({showPublicProfile: false});
         self.setState({userInfo: { username: data.username }});
-        console.log("new user info", this.state.userInfo);
         break;
       case 'showPublicProfile':
         self.setState({showHome: false});
