@@ -12,7 +12,7 @@ class Main extends React.Component {
       isLoggedIn: false,
       showHome: true,
       showProfile: false,
-      showPublicProfile: true,
+      showPublicProfile: false,
       userInfo: {
         username: '',
       }
