@@ -107,18 +107,20 @@ app.post('/signup', function(req, res) {
 					console.log("error: ", err);
 					res.send(err);
 				}
-				console.log('user was saved:', user);
-				//create token
-				var token = jwt.sign(user, app.get('superSecret'), { expiresInminutes:1440 });
-				console.log('after user saved, this token was created:', token)
-				//send token
-				res.json({
-					success: true,
-					message: 'Enjoy your token!',
-					token: token,
-					username: user.username,
-					password: user.password
-				});
+				else {
+					console.log('user was saved:', user);
+					//create token
+					var token = jwt.sign(user, app.get('superSecret'), { expiresInminutes:1440 });
+					console.log('after user saved, this token was created:', token)
+					//send token
+					res.json({
+						success: true,
+						message: 'Enjoy your token!',
+						token: token,
+						username: user.username,
+						password: user.password
+					});
+				}
 			});
 
 		});
