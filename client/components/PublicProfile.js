@@ -6,6 +6,7 @@ import $ from 'jquery';
 class PublicProfile extends React.Component {
   constructor(){
     super();
+    this.getUsernameRef = this.getUsernameRef.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.state = {
       username: '',
@@ -13,19 +14,26 @@ class PublicProfile extends React.Component {
     }
   }
 
-  fetchData(){
+  getUsernameRef(ref){
+    this.usernameRef = ref;
+  }
+
+  fetchData(e){
+    console.log('inside fetchData');
+    e.preventDefault();
     let self = this;
+    let user = this.usernameRef.value;
 
     $.ajax({
       url: '/allwishes',
       type: 'GET',
       data: {
-        username: 'charles2'
+        username: user
       },
       success: function(data){
         console.log('public profile data', data);
         self.setState({
-          // username: self.props.userInfo.username,
+          username: user,
           wishlist: data
         });
       },
@@ -38,22 +46,15 @@ class PublicProfile extends React.Component {
 
   }
 
-  componentDidMount(){
-    // let self = this;
-    // let query = this.props.userInfo.username;
-    // console.log(typeof query);
-
-    // this.setState({
-    //   username: this.props.userInfo.username
-    // });
-
-    setTimeout(this.fetchData, 3);
-  }
-
   render(){
     return (
       <div>
-        <h1>Public Profile Page | Welcome to {this.state.username} Wishlist</h1>
+        <h1>Public Profile Page</h1>
+        <form>
+          <label>Find a Wishlist</label>&nbsp;
+          <input type="text" placeholder="Enter a Name" ref={this.getUsernameRef} />&nbsp;
+          <button type='submit' className='btn btn-primary' onClick={this.fetchData}>Search</button>
+        </form>
         <div className='row'>
           <div className='col-md-12'>
             <Wishlist userInfo={this.props.userInfo} wishlist={this.state.wishlist} />
