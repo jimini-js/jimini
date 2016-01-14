@@ -18,17 +18,18 @@ class Wishlist extends React.Component {
 
   removeWish(wishId){
     console.log(wishId);
-    // let newWishList;
-    //
-    // this.state.wishlist.forEach(wish => {
-    //   if(wish._id !== wishId){
-    //     newWishList.push(wish);
-    //   }
-    // })
-    //
-    // this.setState({
-    //   wishlist: newWishList;
-    // });
+    let newWishList = [];
+
+    this.state.wishlist.forEach(wish => {
+      if(wish._id !== wishId){
+        newWishList.push(wish);
+      }
+      console.log("list in loop:", newWishList);
+    })
+
+    this.setState({
+      wishlist: newWishList
+    });
   }
 
   render(){
