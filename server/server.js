@@ -196,7 +196,8 @@ app.post('/wishlist', function(req, res){
         wishname: wishname,
         category: category,
         link: link,
-        description: description
+        description: description,
+        purchased: false
 	});
 
 	wish.save(function(err, wish) {
@@ -208,6 +209,20 @@ app.post('/wishlist', function(req, res){
 		res.end();
 	});
 
+});
+
+//***************Marking item as purchased:
+app.put('/buy', function(req,res){
+	console.log('handling PUT request to /buy');
+	console.log('req.body.id: ', req.body.id);
+	var id = req.body.id;
+	Wish.findOne({_id:id},function(err,wish){
+		console.log('found wish: ',wish);
+		wish.purchased = true;
+		wish.save(function(err){
+			res.send(wish);
+		});
+	});
 });
 
 //*********GETS ALL WISHES FOR GIVEN USER
