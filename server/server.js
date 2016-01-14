@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
 
 var app = express();
 var jsonParser = bodyParser.json();
@@ -42,8 +43,45 @@ app.use(function(req, res, next){
 
 //********HANDLE REQUEST TO ROOT
 
-app.get('/', function(req, res, next){
-  res.sendFile(path.join(__dirname, '../client/index.html'));
+//*****authentication
+
+// JWT config - sets up secret
+var jwtSecret = 'thupers3crT$12';
+app.set('superSecret', jwtSecret);
+
+//middleware
+function authenticate(req, res, next){
+	//checks for token in request
+  	var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+	  console.log('in auth mw - req.headers: ', req.headers);
+	  if (token) {
+	  	console.log('in auth mw - token exists');
+
+	  	// verify token validity - if valid, next()'' if not, return success: false
+	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+	      if (err) {
+	      	console.log(' in auth mw - err verifying token:', err);
+	        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+	      } else {
+	      	console.log('in auth mw - successfully verified token:', decoded);
+	        req.decoded = decoded;    
+	        next();
+	      }
+	    });
+
+	  } else {
+	  	console.log('in auth mw - no token provided')
+	    return res.status(403).send({ 
+	        success: false, 
+	        message: 'No token provided.' 
+	    });    
+	}
+}
+
+//serves html, authenticates
+app.get('/', function(req, res){
+  res.sendFile(path.join(__dirname, '../client/index.html'))
 });
 
 app.use(express.static(path.join(__dirname, '../client')));
@@ -61,7 +99,7 @@ app.post('/signup', function(req, res) {
 			//store user info
 			var user = User({
 				username: username,
-				password: hash
+				password: hash,
 			});
 
 			user.save(function(err, user) {
@@ -69,15 +107,24 @@ app.post('/signup', function(req, res) {
 					console.log("error: ", err);
 					res.send(err);
 				}
-
-				console.log('user that was saved:', user);
-				res.send(user);
+				console.log('user was saved:', user);
+				//create token
+				var token = jwt.sign(user, app.get('superSecret'), { expiresInminutes:1440 });
+				console.log('after user saved, this token was created:', token)
+				//send token
+				res.json({
+					success: true,
+					message: 'Enjoy your token!',
+					token: token,
+					username: user.username,
+					password: user.password
+				});
 			});
 
 		});
 	})
 })
-
+//finds user in db, if exists --> callback
 function authenticateUser(username, password, callback){
 
   User.findOne({username: username}, function(err, user){
@@ -100,11 +147,21 @@ app.post('/login', function(req, res){
 
 	authenticateUser(username, password, function(err, user){
 	    if (user) {
-	      // req.session.username = user.username;
+	     
 	      	bcrypt.compare(password, user.password, function(err, loggedin) {
 	      		if (loggedin) {
 	      			console.log ('you are logged in!');
-	      			res.send(user);
+	      			var token = jwt.sign(user, app.get('superSecret'), {
+			          expiresInMinutes: 1440 // expires in 24 hours
+			        });
+
+			        // return the information including token as JSON
+			        res.json({
+			          success: true,
+			          message: 'Enjoy your token!',
+			          token: token,
+			          username: username
+			        });
 	      		} else {
 	      			console.log ('wrong username/password!');
 	      			res.send('InvalidPassword');
