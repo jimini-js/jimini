@@ -36,12 +36,12 @@ class ItemForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    let self = this;
     let username = this.props.userInfo.username;
     let itemname = this.itemnameRef.value;
     let category = this.categoryRef.value;
     let url = this.urlRef.value;
     let message = this.messageRef.value;
+    let self = this;
 
     $.ajax({
       url: '/wishlist',
@@ -56,8 +56,6 @@ class ItemForm extends React.Component {
         description: message
       }),
       success: function(data){
-        console.log('post to /wishlist success');
-        console.log('data from server: ', data);
         self.props.updateWishlist(data);
       },
       error: function(err){

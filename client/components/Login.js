@@ -38,7 +38,6 @@ class Login extends React.Component {
       password: pw,
       }),
       success: function(data){
-        console.log('post to /login success');
         if(data.responseText === 'InvalidPassword' || data.responseText === 'InvalidPassword'){
           self.handleData('showHome');
         } else {
