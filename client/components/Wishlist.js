@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './Item.js';
+import $ from 'jquery';
 
 class Wishlist extends React.Component {
   constructor(){
@@ -29,6 +30,21 @@ class Wishlist extends React.Component {
 
     this.setState({
       wishlist: newWishList
+    });
+
+    $.ajax({
+      url: '/wish',
+      type: 'DELETE',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        id: wishId
+      }),
+      success: function(data){
+        console.log('success deletion', data);
+      },
+      error: function(err){
+        console.log('deletion error', err);
+      }
     });
   }
 
