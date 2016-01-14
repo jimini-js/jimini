@@ -47,7 +47,6 @@ class Signup extends React.Component {
       }),
       success: function(data){
         if(data.name === 'ValidationError'){
-
           self.handleData('showHome');
         } else {
           console.log('this is the data:', data);

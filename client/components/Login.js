@@ -28,6 +28,8 @@ class Login extends React.Component {
     let pw = this.passwordRef.value;
     let self = this;
 
+    var token = localStorage.token || null;
+
     $.ajax({
       url: '/login',
       type: 'POST',
@@ -41,6 +43,9 @@ class Login extends React.Component {
         if(data.responseText === 'InvalidPassword' || data.responseText === 'InvalidPassword'){
           self.handleData('showHome');
         } else {
+          console.log('this is the data:', data);
+          localStorage.token = data.token;
+          console.log('this is the localStorage.token: ', localStorage.token);
           self.handleData('showProfile', data);
         }
       },

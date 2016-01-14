@@ -43,6 +43,8 @@ app.use(function(req, res, next){
 
 //********HANDLE REQUEST TO ROOT
 
+//*****authentication
+
 // JWT config - sets up secret
 var jwtSecret = 'thupers3crT$12';
 app.set('superSecret', jwtSecret);
