@@ -7,7 +7,7 @@ class Item extends React.Component {
         <h3>{this.props.itemname}</h3>
         <p>{this.props.category}</p>
         <p>{this.props.message}</p>
-        <a href='{this.props.url}'>{this.props.url}</a>
+        <a href={this.props.url}>{this.props.url}</a>
       </div>
     )
   }

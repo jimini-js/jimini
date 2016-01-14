@@ -8,8 +8,8 @@ class Wishlist extends React.Component {
       wishlist: []
     }
   }
+  
   componentWillReceiveProps(nextProps){
-    console.log("nextprops", nextProps);
     this.setState({
       wishlist: nextProps.wishlist
     });

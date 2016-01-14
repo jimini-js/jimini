@@ -17,9 +17,6 @@ class Profile extends React.Component {
   fetchData(){
     let self = this;
 
-    console.log("inside fetch data");
-    console.log("state", this.state);
-
     $.ajax({
       url: '/allwishes',
       type: 'GET',
@@ -27,7 +24,6 @@ class Profile extends React.Component {
         username: self.props.userInfo.username
       },
       success: function(data){
-        console.log(data);
         self.setState({
           username: self.props.userInfo.username,
           wishlist: data
@@ -37,25 +33,13 @@ class Profile extends React.Component {
         console.log('error:', err);
       }
     });
-
-    console.log("after ajax", this.state);
-
   }
 
   componentDidMount(){
-    // let self = this;
-    // let query = this.props.userInfo.username;
-    // console.log(typeof query);
-
-    // this.setState({
-    //   username: this.props.userInfo.username
-    // });
-
-    setTimeout(this.fetchData, 3);
+    setTimeout(this.fetchData, 0);
   }
 
   updateWishlist(item){
-    console.log(item);
     let newWishList = this.state.wishlist.concat([ item ]);
     this.setState({
       wishlist: newWishList

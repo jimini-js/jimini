@@ -12,25 +12,23 @@ class Home extends React.Component {
   }
 
   handleClick(){
-    let clicked = this.state.renderLogin;
-
     this.setState({
-      renderLogin: !clicked
+      renderLogin: !this.state.renderLogin
     })
   }
 
   render(){
-    let signLogin;
+    let viewBox;
 
     if(this.state.renderLogin){
-      signLogin = <Login updateView={this.props.updateView} handleClick={this.handleClick} />
+      viewBox = <Login updateView={this.props.updateView} handleClick={this.handleClick} />
     } else {
-      signLogin = <Signup updateView={this.props.updateView} handleClick={this.handleClick} />
+      viewBox = <Signup updateView={this.props.updateView} handleClick={this.handleClick} />
     }
 
     return (
       <div>
-        {signLogin}
+        {viewBox}
       </div>
     )
   }
