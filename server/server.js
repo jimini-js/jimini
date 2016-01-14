@@ -169,5 +169,15 @@ app.get('/allwishes', function(req, res){
 	});
 });
 
+//*********DELETE a wish
+app.delete('/wish', function(req,res){
+	console.log('handling DELETE request to /wish');
+	console.log('req.body.id: ', req.body.id);
+	var id = req.body.id;
+	Wish.find({_id:id}).remove(function(err,removed){
+		res.send(removed.result);
+	})
+});
+
 app.listen(port);
 console.log('Listening on port ' + port + '...');
