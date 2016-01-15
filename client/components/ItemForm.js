@@ -79,8 +79,8 @@ class ItemForm extends React.Component {
           <input type='text' name='category' className='form-control' placeholder='Category' ref={this.getCategoryRef} />
         </div>
         <div className='form-group'>
-          <label>Message</label>
-          <input type='text' name='message' className='form-control' placeholder='Message' ref={this.getMessageRef} />
+          <label>Description</label>
+          <input type='text' name='message' className='form-control' placeholder='Description' ref={this.getMessageRef} />
         </div>
         <div className='form-group'>
           <label>Link</label>

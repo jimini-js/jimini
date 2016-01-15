@@ -30,7 +30,9 @@ var wishSchema = new Schema({
   category: String,
   link: String,
   description: String,
-  purchased: Boolean
+  purchased: Boolean,
+  buyername: String,
+  message: String
 });
 var Wish = mongoose.model('Wish', wishSchema);
 
