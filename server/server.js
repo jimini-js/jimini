@@ -226,19 +226,63 @@ app.post('/wishlist', function(req, res){
 		res.send(wish);
 		res.end();
 	});
-
 });
 
-//***************Marking item as purchased:
+//**********EDIT WISH
+app.put('/editwish', function(req, res){
+	var id = req.body.id;
+	var username = req.body.username;
+	var wishname = req.body.wishname;
+	var category = req.body.category;
+	var link = req.body.link;
+	var description = req.body.description;
+	console.log('/editwish updated info for wish in PUT request: ',
+			id, 
+			username,
+			wishname,
+			category,
+			link,
+			description);
+	Wish.findOne({_id:id},function(err,wish){
+		console.log('found wish: ',wish);
+		wish.username = username;
+		wish.wishname = wishname;
+		wish.category = category;
+		wish.link = link;
+		wish.description = description;
+		wish.save(function(err){
+			if (err) {
+				console.log('error updating purchased wish with buyername/message:', err);
+			} else {
+				console.log('updated purchased wish... success!', wish);
+				res.send(wish);
+			};
+		});
+	});
+});
+
+//**********MARKS ITEM AS PURCHASED, SAVES BUYER INFO
 app.put('/buy', function(req,res){
 	console.log('handling PUT request to /buy');
-	console.log('req.body.id: ', req.body.id);
+	console.log('/buy req.body.id: ', req.body.id);
 	var id = req.body.id;
+	var buyername = req.body.buyername || null;
+	var message = req.body.message || null;
+	console.log('/buy req.body.buyername, req.body.message: ',
+			buyername,
+			message);
 	Wish.findOne({_id:id},function(err,wish){
 		console.log('found wish: ',wish);
 		wish.purchased = true;
+		wish.buyername = buyername;
+		wish.message = message;
 		wish.save(function(err){
-			res.send(wish);
+			if (err) {
+				console.log('error updating purchased wish with buyername/message:', err);
+			} else {
+				console.log('updated purchased wish... success!', wish);
+				res.send(wish);
+			};
 		});
 	});
 });
@@ -270,6 +314,7 @@ app.delete('/wish', function(req,res){
 		res.send(removed.result);
 	})
 });
+
 
 app.listen(port);
 console.log('Listening on port ' + port + '...');
