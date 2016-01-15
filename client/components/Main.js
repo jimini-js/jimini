@@ -3,6 +3,7 @@ import Home from './Home.js';
 import Profile from './Profile.js';
 import PublicProfile from './PublicProfile.js';
 import Footer from './Footer.js';
+import $ from 'jquery';
 
 class Main extends React.Component {
   constructor(){
@@ -16,6 +17,36 @@ class Main extends React.Component {
       userInfo: {
         username: '',
       }
+    }
+  }
+
+  componentWillMount(){
+    let self = this;
+    if (localStorage.token) {
+      $.ajax({
+        url: '/authenticate',
+        type: 'POST',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify({
+          token: localStorage.token
+        }),
+        success: function(data){
+          if(data.responseText === 'InvalidToken' || data.responseText === 'InvalidToken'){
+            self.updateView('showHome');
+          } else {
+            console.log('this is the data:', data);
+            if (data.username) {
+              self.updateView('showProfile', data.username);
+            }
+          }
+        },
+        error: function(err){
+          console.log('error:', err);
+        }
+      });
+    } else {
+      self.updateView('showHome');
     }
   }
 

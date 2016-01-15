@@ -53,10 +53,10 @@ app.set('superSecret', jwtSecret);
 function authenticate(req, res, next){
 	//checks for token in request
   	var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-	  console.log('in auth mw - req.headers: ', req.headers);
+  		console.log('in auth mw - token exists', token);
+	  // console.log('in auth mw - req.headers: ', req.headers);
 	  if (token) {
-	  	console.log('in auth mw - token exists');
+	  	
 
 	  	// verify token validity - if valid, next()'' if not, return success: false
 	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
@@ -87,6 +87,24 @@ app.get('/', function(req, res){
 app.use(express.static(path.join(__dirname, '../client')));
 
 app.use(bodyParser.json());
+
+app.post('/authenticate', function(req, res) {
+	var token = req.body.token || req.query.token || req.headers['x-access-token'];
+	var decoded = jwt.decode(token);
+	var username = decoded._doc.username;
+    console.log('this is the decoded token:', decoded);
+	console.log('in /auth - token exists', token);
+	console.log('in /auth - this is username: ',username )
+	User.findOne({username: username}, function (err, username) {
+		if (err) {
+			res.send('InvalidToken');
+			console.log('err in /authenticate: ', err);
+		} else {
+			console.log('***success/authenticate username', username);
+			res.json({username: username});
+		};
+	});
+})
 
 app.post('/signup', function(req, res) {
 	var username = req.body.username;
