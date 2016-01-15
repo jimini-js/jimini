@@ -78,6 +78,52 @@ class ItemForm extends React.Component {
           <label>Category</label>
           <input type='text' name='category' className='form-control' placeholder='Category' ref={this.getCategoryRef} />
         </div>
+        <div className='btn-group-vertical' role='group' aria-label='...'>
+          <div className="btn-group btn-group-justified" aria-label="...">
+            <div className="btn-group" role="group">
+              <button className="btn btn-default">
+                <img src="../assets/books.png" width="50" height="50" />
+              </button>
+            </div>
+            <div className="btn-group" role="group">
+              <button className="btn btn-default">
+                <img src="../assets/clothing.png" width="50" height="50" />
+              </button>
+            </div>
+            <div className="btn-group" role="group">
+              <button className="btn btn-default">
+                <img src="../assets/electronics.png" width="50" height="50" />
+              </button>
+            </div>
+            <div className="btn-group" role="group">
+              <button className="btn btn-default">
+                <img src="../assets/handmade.png" width="50" height="50" />
+              </button>
+            </div>
+          </div>
+          <div className="btn-group btn-group-justified" aria-label="...">
+            <div className="btn-group" role="group">
+              <button className="btn btn-default">
+                <img src="../assets/health.png" width="50" height="50" />
+              </button>
+            </div>
+            <div className="btn-group" role="group">
+              <button className="btn btn-default">
+                <img src="../assets/home.png" width="50" height="50" />
+              </button>
+            </div>
+            <div className="btn-group" role="group">
+              <button className="btn btn-default">
+                <img src="../assets/outdoor.png" width="50" height="50" />
+              </button>
+            </div>
+            <div className="btn-group" role="group">
+              <button className="btn btn-default">
+                <img src="../assets/videosgames.png" width="50" height="50" />
+              </button>
+            </div>
+          </div>
+        </div>
         <div className='form-group'>
           <label>Message</label>
           <input type='text' name='message' className='form-control' placeholder='Message' ref={this.getMessageRef} />
