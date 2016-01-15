@@ -58,7 +58,8 @@ class Wishlist extends React.Component {
           url={item.link}
           id={item._id}
           key={ind}
-          removeWish={this.removeWish} />
+          removeWish={this.removeWish}
+          isLoggedIn={this.props.isLoggedIn} />
       )
     });
 

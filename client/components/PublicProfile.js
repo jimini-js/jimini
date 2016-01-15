@@ -14,6 +14,30 @@ class PublicProfile extends React.Component {
     }
   }
 
+  componentWillMount(){
+    let self = this;
+
+    if(this.props.params !== 'search'){
+      $.ajax({
+        url: '/allwishes',
+        type: 'GET',
+        data: {
+          username: self.props.params.username
+        },
+        success: function(data){
+          console.log('public profile data', data);
+          self.setState({
+            username: self.props.params.username,
+            wishlist: data
+          });
+        },
+        error: function(err){
+          console.log('error', err);
+        }
+      });
+    }
+  }
+
   getUsernameRef(ref){
     this.usernameRef = ref;
   }
@@ -47,6 +71,7 @@ class PublicProfile extends React.Component {
   }
 
   render(){
+    console.log(this.props.params.username);
     return (
       <div>
         <h1>Public Profile Page</h1>
