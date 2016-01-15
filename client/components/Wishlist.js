@@ -90,7 +90,7 @@ class Wishlist extends React.Component {
           message={item.message}
           itemname={item.wishname}
           category={item.category}
-          message={item.description}
+          description={item.description}
           url={item.link}
           id={item._id}
           key={ind}
@@ -107,7 +107,7 @@ class Wishlist extends React.Component {
             <Item
             itemname={item.wishname}
             category={item.category}
-            message={item.description}
+            description={item.description}
             url={item.link}
             id={item._id}
             key={ind}
