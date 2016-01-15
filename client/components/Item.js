@@ -36,7 +36,9 @@ class Item extends React.Component {
           <Thumbnail src="../assets/macbook_icon.png" alt="242x200">
             <h3>{this.props.itemname}</h3>
             <p>{this.props.category}</p>
-            <p>{this.props.message}</p>
+            <p>Bought: {isPurchased}</p>
+            <p>Purchased by:{this.props.buyername}</p>
+            <p>Message:{this.props.message}</p>
             <a href={this.props.url}>{this.props.url}</a>
             <button type='button' className='btn btn-info' onClick={this.handleRemove}>Remove Item</button>
           </Thumbnail>
