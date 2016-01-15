@@ -53,6 +53,7 @@ class Item extends React.Component {
         </Col>
     );
 
+
     return (
       <div>
         {thumbnailInstance}
