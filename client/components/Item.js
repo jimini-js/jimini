@@ -1,5 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
+import { Col } from 'react-bootstrap';
+import { Thumbnail } from 'react-bootstrap';
 
 class Item extends React.Component {
   constructor(){
@@ -39,15 +41,22 @@ class Item extends React.Component {
       )
     }
 
+    const thumbnailInstance = (
+        <Col xs={6} md={4}>
+          <Thumbnail src="../assets/macbook_icon.png" alt="242x200">
+            {console.log('this.props in thumbnailInstance ', this.props)}
+            <h3>{this.props.itemname}</h3>
+            <p>{this.props.category}</p>
+            <p>{this.props.message}</p>
+            <a href={this.props.url}>{this.props.url}</a>
+            <div>{changeButton}</div>
+          </Thumbnail>
+        </Col>
+    );
 
     return (
-      <div className='col-md-4'>
-        <h3>{this.props.itemname}</h3>
-        <p>{this.props.category}</p>
-        <p>{this.props.message}</p>
-        <p>{isPurchased}</p>
-        <a href={this.props.url}>{this.props.url}</a>
-        {changeButton}
+      <div>
+        {thumbnailInstance}
       </div>
     )
   }
