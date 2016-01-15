@@ -6,6 +6,7 @@ class Wishlist extends React.Component {
   constructor(){
     super()
     this.removeWish = this.removeWish.bind(this);
+    this.markAsBought = this.markAsBought.bind(this);
     this.state = {
       wishlist: []
     }
@@ -18,15 +19,13 @@ class Wishlist extends React.Component {
   }
 
   removeWish(wishId){
-    console.log(wishId);
     let newWishList = [];
 
     this.state.wishlist.forEach(wish => {
       if(wish._id !== wishId){
         newWishList.push(wish);
       }
-      console.log("list in loop:", newWishList);
-    })
+    });
 
     this.setState({
       wishlist: newWishList
@@ -48,10 +47,42 @@ class Wishlist extends React.Component {
     });
   }
 
+  markAsBought(wishId){
+    let newWishList = [];
+
+    this.state.wishlist.forEach(wish => {
+      if(wish._id !== wishId){
+        newWishList.push(wish);
+      }
+    });
+
+    this.setState({
+      wishlist: newWishList
+    });
+
+    $.ajax({
+      url: '/buy',
+      type: 'PUT',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        id: wishId
+      }),
+      success: function(data){
+        console.log('success bought', data);
+      },
+      error: function(err){
+        console.log('deletion error', err);
+      }
+    });
+  }
+
   render(){
-    let items = this.state.wishlist.map((item, ind) => {
-      return (
-        <Item
+    let items = [];
+
+    if(this.props.isLoggedIn){
+      items = this.state.wishlist.map((item, ind) => {
+        return (
+          <Item
           itemname={item.wishname}
           category={item.category}
           message={item.description}
@@ -59,9 +90,31 @@ class Wishlist extends React.Component {
           id={item._id}
           key={ind}
           removeWish={this.removeWish}
-          isLoggedIn={this.props.isLoggedIn} />
-      )
-    });
+          markAsBought={this.markAsBought}
+          isLoggedIn={this.props.isLoggedIn}
+          isPurchased={item.purchased} />
+        )
+      });
+    } else {
+      this.state.wishlist.forEach((item, ind) => {
+        if(!item.purchased){
+          items.push(
+            <Item
+            itemname={item.wishname}
+            category={item.category}
+            message={item.description}
+            url={item.link}
+            id={item._id}
+            key={ind}
+            removeWish={this.removeWish}
+            markAsBought={this.markAsBought}
+            isLoggedIn={this.props.isLoggedIn}
+            isPurchased={item.purchased} />
+          );
+        }
+      });
+    }
+
 
     return(
       <div>
