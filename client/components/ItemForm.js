@@ -24,6 +24,7 @@ class ItemForm extends React.Component {
 
   getCategoryRef(ref){
     this.categoryRef = ref;
+    console.log(ref);
   }
 
   getMessageRef(ref){
@@ -81,7 +82,7 @@ class ItemForm extends React.Component {
         <div className='btn-group-vertical' role='group' aria-label='...'>
           <div className="btn-group btn-group-justified" aria-label="...">
             <div className="btn-group" role="group">
-              <button type='button' className="btn btn-default">
+              <button type='button' className="btn btn-default" data-category='Books' onClick={this.getCategoryRef}>
                 <div>Books</div>
                 <img src="../assets/books.png" width="50" height="50" />
               </button>
