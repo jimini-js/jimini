@@ -54,6 +54,27 @@ class Item extends React.Component {
         </Col>
     );
 
+  render(){
+    let removeButton;
+
+    if(this.props.isLoggedIn){
+      console.log('this.props.isLoggedIn in isLoggedIn ', this.props.isLoggedIn);
+      removeButton = (<button type='button' className='btn btn-info' onClick={this.handleRemove}>Remove Item</button>);
+    }
+
+    const thumbnailInstance = (
+        <Col xs={6} md={4}>
+          <Thumbnail src="../assets/macbook_icon.png" alt="242x200">
+            {console.log('this.props in thumbnailInstance ', this.props)}
+            <h3>{this.props.itemname}</h3>
+            <p>{this.props.category}</p>
+            <p>{this.props.message}</p>
+            <a href={this.props.url}>{this.props.url}</a>
+            {removeButton}
+          </Thumbnail>
+        </Col>
+    );
+
     return (
       <div>
         {thumbnailInstance}
