@@ -39,7 +39,7 @@ class ItemForm extends React.Component {
     e.preventDefault();
     let username = this.props.userInfo.username;
     let itemname = this.itemnameRef.value;
-    let category = this.categoryRef.value;
+    let category = this.categoryRef;
     let url = this.urlRef.value;
     let message = this.messageRef.value;
     let self = this;
@@ -65,7 +65,6 @@ class ItemForm extends React.Component {
     });
 
     this.itemnameRef.value = '';
-    this.categoryRef.value = '';
     this.urlRef.value = '';
     this.messageRef.value = '';
   }
@@ -75,11 +74,8 @@ class ItemForm extends React.Component {
       <form ref='form'>
         <label>Item</label>
           <input type='text' name='itemname' className='form-control' placeholder='Item Name' ref={this.getItemnameRef} />
-        <div className='form-group'>
-          <label>Category</label>
-          <input type='text' name='category' className='form-control' placeholder='Category' ref={this.getCategoryRef} />
-        </div>
-        <Categories getCategoryRef={this.getCategoryRef} />
+        <label>Category</label>
+          <Categories getCategoryRef={this.getCategoryRef} />
         <div className='form-group'>
           <label>Description</label>
           <input type='text' name='message' className='form-control' placeholder='Description' ref={this.getMessageRef} />

@@ -10,6 +10,7 @@ class Categories extends React.Component {
   setCategory(ref){
     let category = ref.target.textContent ? ref.target.textContent : ref.target.alt
 
+    this.props.getCategoryRef(category);
     console.log("CATEGORY:", category);
   }
 
