@@ -16,13 +16,12 @@ class Categories extends React.Component {
 
   render(){
     return(
-      <div className='btn-group-vertical' role='group' aria-label='...'>
+      <div className='btn-group-vertical'role='group' aria-label='...'>
         <div className="btn-group btn-group-justified" aria-label="...">
           <div className="btn-group" role="group" ref='Books' onClick={this.setCategory}>
             <button type='button' className="btn btn-default">
-              <div>Books
+              <div>Books</div>
               <img src="../assets/books.png" width="50" height="50" alt='Books' />
-              </div>
             </button>
           </div>
           <div className="btn-group" role="group" ref='Clothing' onClick={this.setCategory}>
