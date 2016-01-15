@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class Item extends React.Component {
   constructor(){
@@ -15,8 +16,11 @@ class Item extends React.Component {
 
   handleBought(){
     let wishId = this.props.id;
+    let name = $('#name').val();
+    let message = $('#message').val();
+    console.log(name, message);
 
-    this.props.markAsBought(wishId);
+    this.props.markAsBought(wishId,name,message);
   }
 
   render(){
@@ -26,7 +30,13 @@ class Item extends React.Component {
     if (this.props.isLoggedIn) {
       changeButton = (<button type='button' className='btn btn-info' onClick={this.handleRemove}>Remove Item</button>);
     } else {
-      changeButton = (<button type='button' className='btn btn-info' onClick={this.handleBought}>Purchase Item</button>);
+      changeButton = (
+        <div>
+          <input type='text' placeholder='Name' id='name' />
+          <input type='text' placeholder='Message' id='message' />
+          <button type='button' className='btn btn-info' onClick={this.handleBought}>Purchase Item</button>
+        </div>
+      )
     }
 
 

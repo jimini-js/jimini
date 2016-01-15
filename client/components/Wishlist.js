@@ -47,7 +47,7 @@ class Wishlist extends React.Component {
     });
   }
 
-  markAsBought(wishId){
+  markAsBought(wishId,name,message){
     let newWishList = [];
 
     this.state.wishlist.forEach(wish => {
@@ -65,15 +65,18 @@ class Wishlist extends React.Component {
       type: 'PUT',
       contentType: 'application/json',
       data: JSON.stringify({
-        id: wishId
+        id: wishId,
+        buyername: name,
+        message: message
       }),
       success: function(data){
         console.log('success bought', data);
       },
       error: function(err){
-        console.log('deletion error', err);
+        console.log('buying error', err);
       }
     });
+
   }
 
   render(){
