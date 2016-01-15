@@ -86,6 +86,8 @@ class Wishlist extends React.Component {
       items = this.state.wishlist.map((item, ind) => {
         return (
           <Item
+          buyername={item.buyername}
+          message={item.message}
           itemname={item.wishname}
           category={item.category}
           message={item.description}
