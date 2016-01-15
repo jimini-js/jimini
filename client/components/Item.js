@@ -1,6 +1,5 @@
 import React from 'react';
 import $ from 'jquery';
-// import { Button } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Grid } from 'react-bootstrap';
