@@ -44,7 +44,6 @@ class Item extends React.Component {
     const thumbnailInstance = (
         <Col xs={6} md={4}>
           <Thumbnail src="../assets/macbook_icon.png" alt="242x200">
-            {console.log('this.props in thumbnailInstance ', this.props)}
             <h3>{this.props.itemname}</h3>
             <p>{this.props.category}</p>
             <p>{this.props.message}</p>
