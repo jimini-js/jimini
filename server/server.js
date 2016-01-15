@@ -101,7 +101,7 @@ app.post('/authenticate', function(req, res) {
 			console.log('err in /authenticate: ', err);
 		} else {
 			console.log('***success/authenticate username', username);
-			res.json({username});
+			res.json({username: username});
 		};
 	});
 })
