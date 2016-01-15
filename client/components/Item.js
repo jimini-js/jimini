@@ -12,14 +12,14 @@ class Item extends React.Component {
 
   handleRemove(){
     let wishId = this.props.id;
-
     this.props.removeWish(wishId);
   }
 
   handleBought(){
     let wishId = this.props.id;
-    let name = $('#name').val();
-    let message = $('#message').val();
+    console.log('wishId',wishId);
+    let name = $('#name'+wishId).val();
+    let message = $('#message'+wishId).val();
     console.log(name, message);
 
     this.props.markAsBought(wishId,name,message);
@@ -34,8 +34,8 @@ class Item extends React.Component {
     } else {
       changeButton = (
         <div>
-          <input type='text' placeholder='Name' id='name' />
-          <input type='text' placeholder='Message' id='message' />
+          <input type='text' placeholder='Name' id={'name'+this.props.id} />
+          <input type='text' placeholder='Message' id={'message'+this.props.id} />
           <button type='button' className='btn btn-info' onClick={this.handleBought}>Purchase Item</button>
         </div>
       )
