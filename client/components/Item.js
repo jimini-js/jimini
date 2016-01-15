@@ -29,11 +29,26 @@ class Item extends React.Component {
     let changeButton;
     let thumbnailInstance;
     let isPurchased = this.props.isPurchased.toString();
+    let source = {
+      Books: '../assets/books.png',
+      Clothing: '../assets/clothing.png',
+      Electronics: '../assets/electronics.png',
+      Handmade: '../assets/handmade.png',
+      Health: '../assets/health.png',
+      Home: '../assets/home.png',
+      Money: '../assets/money.png',
+      Outdoor: '../assets/outdoor.png',
+      Toys: '../assets/toys.png',
+      VideosGames: '../assets/videosgames.png'
+    };
 
     if (this.props.isLoggedIn) {
       thumbnailInstance = (
         <Col xs={6} md={4}>
-          <Thumbnail src="../assets/macbook_icon.png" alt="242x200">
+          <Thumbnail>
+            <div>
+            <img src={source[this.props.category]} height='200' width='200' />
+            </div>
             <h3>{this.props.itemname}</h3>
             <p>{this.props.category}</p>
             <p>Bought: {isPurchased}</p>
@@ -47,7 +62,10 @@ class Item extends React.Component {
     } else {
       thumbnailInstance = (
         <Col xs={6} md={4}>
-          <Thumbnail src="../assets/macbook_icon.png" alt="242x200">
+          <Thumbnail>
+            <div>
+            <img src={source[this.props.category]} height='200' width='200' />
+            </div>
             <h3>{this.props.itemname}</h3>
             <p>{this.props.category}</p>
             <p>{this.props.message}</p>
