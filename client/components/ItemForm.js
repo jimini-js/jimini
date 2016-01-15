@@ -25,6 +25,7 @@ class ItemForm extends React.Component {
 
   getCategoryRef(ref){
     this.categoryRef = ref;
+    console.log(ref);
   }
 
   getMessageRef(ref){
