@@ -8,6 +8,7 @@ class Profile extends React.Component {
     super();
     this.updateWishlist = this.updateWishlist.bind(this);
     this.fetchData = this.fetchData.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.state = {
       username: '',
       wishlist: []
@@ -48,9 +49,15 @@ class Profile extends React.Component {
     });
   }
 
+  handleLogout(){
+    localStorage.token='';
+    this.props.updateView('showHome');
+  }
+
   render(){
     return (
       <div>
+        <button className='btn' onClick={this.handleLogout}>Logout</button>
         <h1>Logged In Profile Page | Welcome {this.state.username}</h1>
         <div className='row'>
           <div className='col-md-12'>
