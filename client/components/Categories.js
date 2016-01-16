@@ -74,10 +74,10 @@ class Categories extends React.Component {
               <img src="../assets/toys.png" width="50" height="50" alt='Toys' />
             </button>
           </div>
-          <div className="btn-group" role="group" ref='VideosGames' onClick={this.setCategory}>
+          <div className="btn-group" role="group" ref='Videos/Games' onClick={this.setCategory}>
             <button type='button' className="btn btn-default">
-              <div>Movies/Games</div>
-              <img src="../assets/videosgames.png" width="50" height="50" alt='VideosGames' />
+              <div>Videos/Games</div>
+              <img src="../assets/videosgames.png" width="50" height="50" alt='Videos/Games' />
             </button>
           </div>
         </div>

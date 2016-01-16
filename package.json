@@ -37,6 +37,7 @@
     "mongoose": "^4.3.5",
     "mongoose-unique-validator": "^0.6.2",
     "react-bootstrap": "^0.28.2",
-    "react-router": "^1.0.3"
+    "react-router": "^1.0.3",
+    "the-noun-project": "^2.0.0"
   }
 }

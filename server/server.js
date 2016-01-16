@@ -6,6 +6,12 @@ var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 
+//*****Noun Project api Call dependencies
+var NounProject = require('the-noun-project');
+var nounProjectKey = require('./config/config.js').nounProjectKey;
+var nounProjectSecretKey = require('./config/config.js').nounProjectSecret;
+var nounProjectTest = require('./apis/noun-project-test.json');
+
 var app = express();
 var jsonParser = bodyParser.json();
 var port = process.env.PORT || 4568;
@@ -58,26 +64,26 @@ function authenticate(req, res, next){
   		console.log('in auth mw - token exists', token);
 	  // console.log('in auth mw - req.headers: ', req.headers);
 	  if (token) {
-	  	
+
 
 	  	// verify token validity - if valid, next()'' if not, return success: false
-	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
 	      if (err) {
 	      	console.log(' in auth mw - err verifying token:', err);
-	        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+	        return res.json({ success: false, message: 'Failed to authenticate token.' });
 	      } else {
 	      	console.log('in auth mw - successfully verified token:', decoded);
-	        req.decoded = decoded;    
+	        req.decoded = decoded;
 	        next();
 	      }
 	    });
 
 	  } else {
 	  	console.log('in auth mw - no token provided')
-	    return res.status(403).send({ 
-	        success: false, 
-	        message: 'No token provided.' 
-	    });    
+	    return res.status(403).send({
+	        success: false,
+	        message: 'No token provided.'
+	    });
 	}
 }
 
@@ -161,7 +167,6 @@ function authenticateUser(username, password, callback){
 }
 
 //******CHECKS THAT USER AND PASSWORD EXISTS
-
 app.post('/login', function(req, res){
 
 	var username = req.body.username;
@@ -169,7 +174,7 @@ app.post('/login', function(req, res){
 
 	authenticateUser(username, password, function(err, user){
 	    if (user) {
-	     
+
 	      	bcrypt.compare(password, user.password, function(err, loggedin) {
 	      		if (loggedin) {
 	      			console.log ('you are logged in!');
@@ -198,7 +203,6 @@ app.post('/login', function(req, res){
 });
 
 //*****ADDS WISHES TO WISHLIST
-
 app.post('/wishlist', function(req, res){
 	var username = req.body.username;
 	var wishname = req.body.wishname;
@@ -239,7 +243,7 @@ app.put('/editwish', function(req, res){
 	var link = req.body.link;
 	var description = req.body.description;
 	console.log('/editwish updated info for wish in PUT request: ',
-			id, 
+			id,
 			username,
 			wishname,
 			category,
@@ -290,7 +294,6 @@ app.put('/buy', function(req,res){
 });
 
 //*********GETS ALL WISHES FOR GIVEN USER
-
 app.get('/allwishes', function(req, res){
 	var username = req.query.username;
 
@@ -307,7 +310,7 @@ app.get('/allwishes', function(req, res){
 	});
 });
 
-//*********DELETE a wish
+
 app.delete('/wish', function(req,res){
 	console.log('handling DELETE request to /wish');
 	console.log('req.body.id: ', req.body.id);
@@ -315,6 +318,20 @@ app.delete('/wish', function(req,res){
 	Wish.find({_id:id}).remove(function(err,removed){
 		res.send(removed.result);
 	})
+});
+
+//*********NOUN PROJECT api call
+app.get('/confirmation', function(req, res){
+	nounProject = new NounProject({
+		key: nounProjectKey,
+		secret: nounProjectSecretKey
+	});
+
+	nounProject.getIconByTerm('gifts', function (err, data) {
+    if (!err) {
+        res.send(data);
+    }
+});
 });
 
 

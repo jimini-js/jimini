@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import { Col } from 'react-bootstrap';
 import { Thumbnail } from 'react-bootstrap';
+import PurchaseConfirmation from './PurchaseConfirmation.js';
 
 class Item extends React.Component {
   constructor(){
@@ -34,16 +35,16 @@ class Item extends React.Component {
         <p>Message:{this.props.message}</p>
       </div>) : null;
     let source = {
-      Books: '../assets/books.png',
-      Clothing: '../assets/clothing.png',
-      Electronics: '../assets/electronics.png',
-      Handmade: '../assets/handmade.png',
-      Health: '../assets/health.png',
-      Home: '../assets/home.png',
-      Money: '../assets/money.png',
-      Outdoor: '../assets/outdoor.png',
-      Toys: '../assets/toys.png',
-      VideosGames: '../assets/videosgames.png'
+      'Books': '../assets/books.png',
+      'Clothing': '../assets/clothing.png',
+      'Electronics': '../assets/electronics.png',
+      'Handmade': '../assets/handmade.png',
+      'Health': '../assets/health.png',
+      'Home': '../assets/home.png',
+      'Money': '../assets/money.png',
+      'Outdoor': '../assets/outdoor.png',
+      'Toys': '../assets/toys.png',
+      'Videos/Games': '../assets/videosgames.png'
     };
 
     if (this.props.isLoggedIn) {
@@ -81,6 +82,7 @@ class Item extends React.Component {
     return (
       <div>
         {thumbnailInstance}
+        <PurchaseConfirmation />
       </div>
     )
   }
