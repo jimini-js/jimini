@@ -42,11 +42,27 @@ class Profile extends React.Component {
     setTimeout(this.fetchData, 0);
   }
 
-  updateWishlist(item){
-    let newWishList = this.state.wishlist.concat([ item ]);
-    this.setState({
-      wishlist: newWishList
-    });
+  updateWishlist(action, item){
+    let newWishList;
+    if (action === 'add') {
+      newWishList = this.state.wishlist.concat([ item ]);
+      this.setState({
+        wishlist: newWishList
+      });
+    };
+    if (action === 'delete') {
+      newWishList = [];
+
+      this.state.wishlist.forEach(wish => {
+        if(wish._id !== item){
+          newWishList.push(wish);
+        }
+      });
+
+      this.setState({
+        wishlist: newWishList
+      });
+    }
   }
 
   handleLogout(){
@@ -64,7 +80,7 @@ class Profile extends React.Component {
             <ItemForm userInfo={this.props.userInfo} updateWishlist={this.updateWishlist}/>
           </div>
         </div>
-        <Wishlist wishlist={this.state.wishlist} isLoggedIn={this.props.isLoggedIn} />
+        <Wishlist wishlist={this.state.wishlist} isLoggedIn={this.props.isLoggedIn} updateWishlist={this.updateWishlist} />
       </div>
     )
   }
