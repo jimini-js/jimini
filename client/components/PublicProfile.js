@@ -6,7 +6,6 @@ import $ from 'jquery';
 class PublicProfile extends React.Component {
   constructor(){
     super();
-    this.setGiftIcon = this.setGiftIcon.bind(this);
     this.getUsernameRef = this.getUsernameRef.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.state = {
@@ -39,13 +38,6 @@ class PublicProfile extends React.Component {
       });
     }
 
-    this.setGiftIcon();
-  }
-
-  setGiftIcon(){
-    let self = this;
-    console.log("fetching icons")
-
     $.ajax({
       url: '/confirmation',
       type: 'GET',
@@ -59,6 +51,7 @@ class PublicProfile extends React.Component {
         console.log('error', err);
       }
     });
+
   }
 
   getUsernameRef(ref){
@@ -89,12 +82,9 @@ class PublicProfile extends React.Component {
       }
     });
 
-    console.log('after ajax', this.state);
-
   }
 
   render(){
-    console.log(this.props.params.username);
     return (
       <div>
         <h1>Public Profile Page</h1>
