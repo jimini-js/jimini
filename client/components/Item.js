@@ -35,16 +35,16 @@ class Item extends React.Component {
         <p>Message:{this.props.message}</p>
       </div>) : null;
     let source = {
-      Books: '../assets/books.png',
-      Clothing: '../assets/clothing.png',
-      Electronics: '../assets/electronics.png',
-      Handmade: '../assets/handmade.png',
-      Health: '../assets/health.png',
-      Home: '../assets/home.png',
-      Money: '../assets/money.png',
-      Outdoor: '../assets/outdoor.png',
-      Toys: '../assets/toys.png',
-      VideosGames: '../assets/videosgames.png'
+      'Books': '../assets/books.png',
+      'Clothing': '../assets/clothing.png',
+      'Electronics': '../assets/electronics.png',
+      'Handmade': '../assets/handmade.png',
+      'Health': '../assets/health.png',
+      'Home': '../assets/home.png',
+      'Money': '../assets/money.png',
+      'Outdoor': '../assets/outdoor.png',
+      'Toys': '../assets/toys.png',
+      'Videos/Games': '../assets/videosgames.png'
     };
 
     if (this.props.isLoggedIn) {
