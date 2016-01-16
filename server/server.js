@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
+var nounProject = require('./apis/noun-project.js');
+var nounProjectTest = require('./apis/noun-project-test.json');
 
 var app = express();
 var jsonParser = bodyParser.json();
@@ -58,26 +60,26 @@ function authenticate(req, res, next){
   		console.log('in auth mw - token exists', token);
 	  // console.log('in auth mw - req.headers: ', req.headers);
 	  if (token) {
-	  	
+
 
 	  	// verify token validity - if valid, next()'' if not, return success: false
-	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
 	      if (err) {
 	      	console.log(' in auth mw - err verifying token:', err);
-	        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+	        return res.json({ success: false, message: 'Failed to authenticate token.' });
 	      } else {
 	      	console.log('in auth mw - successfully verified token:', decoded);
-	        req.decoded = decoded;    
+	        req.decoded = decoded;
 	        next();
 	      }
 	    });
 
 	  } else {
 	  	console.log('in auth mw - no token provided')
-	    return res.status(403).send({ 
-	        success: false, 
-	        message: 'No token provided.' 
-	    });    
+	    return res.status(403).send({
+	        success: false,
+	        message: 'No token provided.'
+	    });
 	}
 }
 
@@ -169,7 +171,7 @@ app.post('/login', function(req, res){
 
 	authenticateUser(username, password, function(err, user){
 	    if (user) {
-	     
+
 	      	bcrypt.compare(password, user.password, function(err, loggedin) {
 	      		if (loggedin) {
 	      			console.log ('you are logged in!');
@@ -239,7 +241,7 @@ app.put('/editwish', function(req, res){
 	var link = req.body.link;
 	var description = req.body.description;
 	console.log('/editwish updated info for wish in PUT request: ',
-			id, 
+			id,
 			username,
 			wishname,
 			category,
@@ -307,7 +309,7 @@ app.get('/allwishes', function(req, res){
 	});
 });
 
-//*********DELETE a wish
+
 app.delete('/wish', function(req,res){
 	console.log('handling DELETE request to /wish');
 	console.log('req.body.id: ', req.body.id);
@@ -315,6 +317,23 @@ app.delete('/wish', function(req,res){
 	Wish.find({_id:id}).remove(function(err,removed){
 		res.send(removed.result);
 	})
+});
+
+//*********NOUN PROJECT api call
+app.get('/confirmation', function(req, res){
+	var icons;
+
+	nounProject.call.get(
+		'http://api.thenounproject.com/icons/gifts?limit_to_public_domain=1&limit=10',
+		nounProject.KEY,
+		nounProject.SECRET,
+		function (e, data, res){
+			if (e) console.error(e)
+			icons = data;
+		}
+	)
+
+	res.send(icons);
 });
 
 
