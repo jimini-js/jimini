@@ -18,6 +18,7 @@ class PurchaseConfirmation extends React.Component {
           <h4>{this.props.itemname}</h4>
           <p>{this.props.description}</p>
           <p>{this.props.url}</p>
+          <img src={this.props.giftIcon.icon.preview_url} height='50' width='50'/>
           <input type='text' placeholder='Name' id={'name'+this.props.id} />
           <input type='text' placeholder='Message' id={'message'+this.props.id} />
           <Button onClick={this.props.handleBought}>Purchase</Button>
