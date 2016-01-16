@@ -105,6 +105,14 @@ class Wishlist extends React.Component {
   render(){
     let items = [];
 
+    let dropdown = this.props.isLoggedIn?(
+      <DropdownButton title={this.state.show}>
+        <MenuItem onClick={this.showAll}>All</MenuItem>
+        <MenuItem onClick={this.showPurchased}>Purchased</MenuItem>
+        <MenuItem onClick={this.showUnpurchased}>Not Purchased</MenuItem>
+      </DropdownButton>
+      ):null;
+
     if(this.props.isLoggedIn){
       if (this.state.show==='All'){
         items = this.state.wishlist;
@@ -158,12 +166,7 @@ class Wishlist extends React.Component {
 
     return(
       <div>
-        Wishlist Below:
-        <DropdownButton title={this.state.show}>
-          <MenuItem onClick={this.showAll}>All</MenuItem>
-          <MenuItem onClick={this.showPurchased}>Purchased</MenuItem>
-          <MenuItem onClick={this.showUnpurchased}>Not Purchased</MenuItem>
-        </DropdownButton>
+        Wishlist Below: {dropdown}
         <div className="row">
           {items}
         </div>
