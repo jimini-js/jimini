@@ -47,7 +47,7 @@ class Item extends React.Component {
         <Col xs={6} md={4}>
           <Thumbnail>
             <div>
-            <img src={source[this.props.category]} height='200' width='200' />
+            <img src={source[this.props.category]} className='categoryImg' />
             </div>
             <h3>{this.props.itemname}</h3>
             <p>{this.props.category}</p>
@@ -64,7 +64,7 @@ class Item extends React.Component {
         <Col xs={6} md={4}>
           <Thumbnail>
             <div>
-            <img src={source[this.props.category]} height='200' width='200' />
+            <img src={source[this.props.category]} className='categoryImg' />
             </div>
             <h3>{this.props.itemname}</h3>
             <p>{this.props.category}</p>
