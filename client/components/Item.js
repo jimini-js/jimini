@@ -88,10 +88,16 @@ class Item extends React.Component {
             <p>{this.props.description}</p>
             <a href={this.props.url}>{this.props.url}</a>
             <div>
-              <input type='text' placeholder='Name' id={'name'+this.props.id} />
-              <input type='text' placeholder='Message' id={'message'+this.props.id} />
               <button type='button' className='btn btn-info' onClick={this.open}>Purchase Item</button>
-              <PurchaseConfirmation showModal={this.state.showModal} close={this.close}/>
+              <PurchaseConfirmation
+                showModal={this.state.showModal}
+                close={this.close}
+                giftIcon={this.props.giftIcon}
+                itemname={this.props.itemname}
+                description={this.props.description}
+                url={this.props.url}
+                id={this.props.id}
+                handleBought={this.handleBought}/>
             </div>
           </Thumbnail>
         </Col>
@@ -103,7 +109,6 @@ class Item extends React.Component {
     return (
       <div>
         {thumbnailInstance}
-        <PurchaseConfirmation />
       </div>
     )
   }
