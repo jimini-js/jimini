@@ -327,9 +327,9 @@ app.get('/confirmation', function(req, res){
 		secret: nounProjectSecretKey
 	});
 
-	nounProject.getIconsByTerm('gifts', {limit: 5}, function (err, data) {
+	nounProject.getIconByTerm('gifts', function (err, data) {
     if (!err) {
-        console.log(data.icons);
+        res.send(data);
     }
 });
 });
