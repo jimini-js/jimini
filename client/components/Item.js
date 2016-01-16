@@ -9,6 +9,23 @@ class Item extends React.Component {
     super()
     this.handleRemove = this.handleRemove.bind(this);
     this.handleBought = this.handleBought.bind(this);
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
+    this.state = {
+      showModal: false
+    }
+  }
+
+  close(){
+    this.setState({
+      showModal: false
+    })
+  }
+
+  open(){
+    this.setState({
+      showModal: true
+    });
   }
 
   handleRemove(){
@@ -73,7 +90,8 @@ class Item extends React.Component {
             <div>
               <input type='text' placeholder='Name' id={'name'+this.props.id} />
               <input type='text' placeholder='Message' id={'message'+this.props.id} />
-              <button type='button' className='btn btn-info' onClick={this.handleBought}>Purchase Item</button>
+              <button type='button' className='btn btn-info' onClick={this.open}>Purchase Item</button>
+              <PurchaseConfirmation showModal={this.state.showModal} close={this.close}/>
             </div>
           </Thumbnail>
         </Col>
