@@ -46,10 +46,10 @@ class Item extends React.Component {
       thumbnailInstance = (
         <Col xs={6} md={4}>
           <Thumbnail>
+            <h2>{this.props.itemname}</h2>
             <div>
-            <img src={source[this.props.category]} className='categoryImg' />
+            <img className='categoryImgProfile' src={source[this.props.category]} />
             </div>
-            <h3>{this.props.itemname}</h3>
             <p>{this.props.category}</p>
             <p>Bought: {isPurchased}</p>
             <p>Purchased by:{this.props.buyername}</p>
@@ -63,10 +63,10 @@ class Item extends React.Component {
       thumbnailInstance = (
         <Col xs={6} md={4}>
           <Thumbnail>
+            <h2>{this.props.itemname}</h2>
             <div>
-            <img src={source[this.props.category]} className='categoryImg' />
+            <img className='categoryImgPublic' src={source[this.props.category]} />
             </div>
-            <h3>{this.props.itemname}</h3>
             <p>{this.props.category}</p>
             <p>{this.props.message}</p>
             <a href={this.props.url}>{this.props.url}</a>
