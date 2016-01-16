@@ -36,6 +36,17 @@ class PublicProfile extends React.Component {
         }
       });
     }
+    
+    $.ajax({
+      url: '/confirmation',
+      type: 'GET',
+      success: function(data){
+        console.log('icons:', data);
+      },
+      error: function(err){
+        console.log('error', err);
+      }
+    });
   }
 
   getUsernameRef(ref){

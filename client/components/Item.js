@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import { Col } from 'react-bootstrap';
 import { Thumbnail } from 'react-bootstrap';
+import PurchaseConfirmation from './PurchaseConfirmation.js';
 
 class Item extends React.Component {
   constructor(){
@@ -81,6 +82,7 @@ class Item extends React.Component {
     return (
       <div>
         {thumbnailInstance}
+        <PurchaseConfirmation />
       </div>
     )
   }
