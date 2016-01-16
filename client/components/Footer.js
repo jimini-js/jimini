@@ -1,13 +1,12 @@
 import React from 'react';
-import { Panel } from 'react-bootstrap';
 
 class Footer extends React.Component {
 
   render(){
 
-    const panelInstance = (
-      <Panel>
-        <footer className='footer'>
+    return (
+      <footer className="footer">
+        <div className="row">
           <div className="col-md-12">
             <div className="footer-container">
               <span className="footer-elements">© Jimini 2016&nbsp;</span>
@@ -17,12 +16,8 @@ class Footer extends React.Component {
               <span className="footer-elements">Charles Meredith&nbsp;</span>
             </div>
           </div>
-        </footer>
-      </Panel>
-    );
-
-    return (
-      <div>{panelInstance}</div>
+        </div>
+      </footer>
     )
   }
 }
