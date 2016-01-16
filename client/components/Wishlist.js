@@ -170,6 +170,7 @@ class Wishlist extends React.Component {
         <div className="row">
           {items}
         </div>
+        <div className="wishlist_footer_space"></div>
       </div>
     )
   }
