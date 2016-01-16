@@ -40,7 +40,6 @@ class PublicProfile extends React.Component {
     }
 
     this.setGiftIcon();
-    console.log("gift icon:", this.state.giftIcon);
   }
 
   setGiftIcon(){
@@ -106,7 +105,7 @@ class PublicProfile extends React.Component {
         </form>
         <div className='row'>
           <div className='col-md-12'>
-            <Wishlist userInfo={this.props.userInfo} wishlist={this.state.wishlist} />
+            <Wishlist userInfo={this.props.userInfo} wishlist={this.state.wishlist} giftIcon={this.state.giftIcon} />
           </div>
         </div>
       </div>
