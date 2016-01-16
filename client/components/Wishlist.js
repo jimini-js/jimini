@@ -1,14 +1,22 @@
 import React from 'react';
 import Item from './Item.js';
 import $ from 'jquery';
+//import { Dropdown } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
+//import { DropdownMenu } from 'react-bootstrap';
+import { MenuItem } from 'react-bootstrap';
 
 class Wishlist extends React.Component {
   constructor(){
     super()
     this.removeWish = this.removeWish.bind(this);
     this.markAsBought = this.markAsBought.bind(this);
+    this.showPurchased = this.showPurchased.bind(this);
+    this.showUnpurchased = this.showUnpurchased.bind(this);
+    this.showAll = this.showAll.bind(this);
     this.state = {
-      wishlist: []
+      wishlist: [],
+      show: 'All'
     }
   }
 
@@ -79,11 +87,39 @@ class Wishlist extends React.Component {
 
   }
 
+  showPurchased(e){
+    e.preventDefault();
+    this.setState({show:'Purchased'});
+  }
+
+  showUnpurchased(e){
+    e.preventDefault();
+    this.setState({show:'Not Purchased'});
+  }
+
+  showAll(e){
+    e.preventDefault();
+    this.setState({show:'All'});
+  }
+
   render(){
     let items = [];
 
     if(this.props.isLoggedIn){
-      items = this.state.wishlist.map((item, ind) => {
+      if (this.state.show==='All'){
+        items = this.state.wishlist;
+      }
+      else if (this.state.show==='Purchased'){
+        items = this.state.wishlist.filter(function(item){
+          return (item.purchased)
+        });
+      }
+      else if (this.state.show==='Not Purchased'){
+        items = this.state.wishlist.filter(function(item){
+          return (!item.purchased);
+        });
+      }
+      items = items.map((item, ind) => {
         return (
           <Item
           buyername={item.buyername}
@@ -120,11 +156,15 @@ class Wishlist extends React.Component {
       });
     }
 
-
     return(
       <div>
         Wishlist Below:
-        <div className='row'>
+        <DropdownButton title={this.state.show}>
+          <MenuItem onClick={this.showAll}>All</MenuItem>
+          <MenuItem onClick={this.showPurchased}>Purchased</MenuItem>
+          <MenuItem onClick={this.showUnpurchased}>Not Purchased</MenuItem>
+        </DropdownButton>
+        <div className="row">
           {items}
         </div>
       </div>
