@@ -25,6 +25,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema ({
 	username: { type: String, required: true, unique: true },
 	password: { type: String, required: true },
+	loginMessage: { type: String },
 	address: { type: String }
 });
 userSchema.plugin(uniqueValidator);
@@ -126,6 +127,7 @@ app.post('/signup', function(req, res) {
 			var user = User({
 				username: username,
 				password: hash,
+				loginMessage: ''
 			});
 
 			user.save(function(err, user) {
@@ -175,6 +177,10 @@ app.post('/login', function(req, res){
 	authenticateUser(username, password, function(err, user){
 	    if (user) {
 
+	    	var loginMessage = user.loginMessage;
+	    	user.loginMessage = '';
+	    	user.save(function(){});
+
 	      	bcrypt.compare(password, user.password, function(err, loggedin) {
 	      		if (loggedin) {
 	      			console.log ('you are logged in!');
@@ -187,7 +193,8 @@ app.post('/login', function(req, res){
 			          success: true,
 			          message: 'Enjoy your token!',
 			          token: token,
-			          username: username
+			          username: username,
+			          loginMessage: loginMessage
 			        });
 	      		} else {
 	      			console.log ('wrong username/password!');
@@ -270,18 +277,28 @@ app.put('/editwish', function(req, res){
 //**********MARKS ITEM AS PURCHASED, SAVES BUYER INFO
 app.put('/buy', function(req,res){
 	console.log('handling PUT request to /buy');
-	console.log('/buy req.body.id: ', req.body.id);
 	var id = req.body.id;
 	var buyername = req.body.buyername || null;
 	var message = req.body.message || null;
-	console.log('/buy req.body.buyername, req.body.message: ',
-			buyername,
-			message);
 	Wish.findOne({_id:id},function(err,wish){
 		console.log('found wish: ',wish);
 		wish.purchased = true;
 		wish.buyername = buyername;
 		wish.message = message;
+		
+		var wishOwner = wish.username;
+		console.log('wishOwner:', wishOwner);
+		User.findOne({username:wishOwner},function(err,user){
+			console.log('found wish owner data: ',user);
+			user.loginMessage = 'Somebody loves you! A wish has been fulfilled.';
+			user.save(function(err){
+				if (!err){
+					console.log('login message updated! user data: ',user);
+				}
+			});
+
+		});
+
 		wish.save(function(err){
 			if (err) {
 				console.log('error updating purchased wish with buyername/message:', err);
