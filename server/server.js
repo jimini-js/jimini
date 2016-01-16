@@ -327,11 +327,13 @@ app.get('/confirmation', function(req, res){
 		secret: nounProjectSecretKey
 	});
 
-	nounProject.getIconByTerm('gifts', function (err, data) {
-    if (!err) {
-        res.send(data);
-    }
-});
+	res.send(nounProjectTest);
+
+	// nounProject.getIconByTerm('gifts', function (err, data) {
+  //   if (!err) {
+  //       res.send(data);
+  //   }
+	// });
 });
 
 

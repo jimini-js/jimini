@@ -79,6 +79,8 @@ class Item extends React.Component {
       )
     }
 
+    console.log("icons in items", this.props.giftIcon)
+
     return (
       <div>
         {thumbnailInstance}
