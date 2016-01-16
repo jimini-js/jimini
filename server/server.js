@@ -177,6 +177,10 @@ app.post('/login', function(req, res){
 	authenticateUser(username, password, function(err, user){
 	    if (user) {
 
+	    	var loginMessage = user.loginMessage;
+	    	user.loginMessage = '';
+	    	user.save(function(){});
+
 	      	bcrypt.compare(password, user.password, function(err, loggedin) {
 	      		if (loggedin) {
 	      			console.log ('you are logged in!');
@@ -189,7 +193,8 @@ app.post('/login', function(req, res){
 			          success: true,
 			          message: 'Enjoy your token!',
 			          token: token,
-			          username: username
+			          username: username,
+			          loginMessage: loginMessage
 			        });
 	      		} else {
 	      			console.log ('wrong username/password!');
