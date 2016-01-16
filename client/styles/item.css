@@ -1,4 +1,11 @@
-.categoryImg {
+.categoryImgProfile {
+  display: block;
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.categoryImgPublic {
   display: block;
   height: 200px;
   width: 200px;
