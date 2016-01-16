@@ -57,7 +57,8 @@ class ItemForm extends React.Component {
         description: message
       }),
       success: function(data){
-        self.props.updateWishlist(data);
+        self.props.updateWishlist('add', data);
+        console.log('********/wishlist post:', data);
       },
       error: function(err){
         console.log('error posting to wishlist: ', err);

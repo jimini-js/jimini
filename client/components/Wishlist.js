@@ -27,17 +27,8 @@ class Wishlist extends React.Component {
   }
 
   removeWish(wishId){
-    let newWishList = [];
 
-    this.state.wishlist.forEach(wish => {
-      if(wish._id !== wishId){
-        newWishList.push(wish);
-      }
-    });
-
-    this.setState({
-      wishlist: newWishList
-    });
+    let self =  this;
 
     $.ajax({
       url: '/wish',
@@ -48,11 +39,13 @@ class Wishlist extends React.Component {
       }),
       success: function(data){
         console.log('success deletion', data);
+        self.props.updateWishlist('delete', wishId);
       },
       error: function(err){
         console.log('deletion error', err);
       }
     });
+
   }
 
   markAsBought(wishId,name,message){
