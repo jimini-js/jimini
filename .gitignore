@@ -8,5 +8,5 @@ client/components/bundle.js.map
 #Other
 .DS_Store
 
-#APIs
-server/apis/noun-project.js
+#Config
+server/config/config.js

@@ -36,10 +36,11 @@ class PublicProfile extends React.Component {
         }
       });
     }
-    
+
     $.ajax({
       url: '/confirmation',
       type: 'GET',
+      contentType: 'application/json',
       success: function(data){
         console.log('icons:', data);
       },

@@ -5,7 +5,11 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-var nounProject = require('./apis/noun-project.js');
+
+//*****Noun Project api Call dependencies
+var NounProject = require('the-noun-project');
+var nounProjectKey = require('./config/config.js').nounProjectKey;
+var nounProjectSecretKey = require('./config/config.js').nounProjectSecret;
 var nounProjectTest = require('./apis/noun-project-test.json');
 
 var app = express();
@@ -163,7 +167,6 @@ function authenticateUser(username, password, callback){
 }
 
 //******CHECKS THAT USER AND PASSWORD EXISTS
-
 app.post('/login', function(req, res){
 
 	var username = req.body.username;
@@ -200,7 +203,6 @@ app.post('/login', function(req, res){
 });
 
 //*****ADDS WISHES TO WISHLIST
-
 app.post('/wishlist', function(req, res){
 	var username = req.body.username;
 	var wishname = req.body.wishname;
@@ -292,7 +294,6 @@ app.put('/buy', function(req,res){
 });
 
 //*********GETS ALL WISHES FOR GIVEN USER
-
 app.get('/allwishes', function(req, res){
 	var username = req.query.username;
 
@@ -321,19 +322,16 @@ app.delete('/wish', function(req,res){
 
 //*********NOUN PROJECT api call
 app.get('/confirmation', function(req, res){
-	var icons;
+	nounProject = new NounProject({
+		key: nounProjectKey,
+		secret: nounProjectSecretKey
+	});
 
-	nounProject.call.get(
-		'http://api.thenounproject.com/icons/gifts?limit_to_public_domain=1&limit=10',
-		nounProject.KEY,
-		nounProject.SECRET,
-		function (e, data, res){
-			if (e) console.error(e)
-			icons = data;
-		}
-	)
-
-	res.send(icons);
+	nounProject.getIconsByTerm('gifts', {limit: 5}, function (err, data) {
+    if (!err) {
+        console.log(data.icons);
+    }
+});
 });
 
 
