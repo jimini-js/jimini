@@ -55,7 +55,6 @@ class Item extends React.Component {
             <p>{this.props.category}</p>
             {isPurchased}
             <p>{this.props.description}</p>
-            <p>{this.props.message}</p>
             <a href={this.props.url}>{this.props.url}</a>
             <button type='button' className='btn btn-info' onClick={this.handleRemove}><span className='glyphicon glyphicon-remove'></span>Remove Item</button>
           </Thumbnail>
