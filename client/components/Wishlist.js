@@ -158,7 +158,8 @@ class Wishlist extends React.Component {
             removeWish={this.removeWish}
             markAsBought={this.markAsBought}
             isLoggedIn={this.props.isLoggedIn}
-            isPurchased={item.purchased} />
+            isPurchased={item.purchased}
+            giftIcon={this.props.giftIcon} />
           );
         }
       });
