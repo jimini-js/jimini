@@ -272,18 +272,28 @@ app.put('/editwish', function(req, res){
 //**********MARKS ITEM AS PURCHASED, SAVES BUYER INFO
 app.put('/buy', function(req,res){
 	console.log('handling PUT request to /buy');
-	console.log('/buy req.body.id: ', req.body.id);
 	var id = req.body.id;
 	var buyername = req.body.buyername || null;
 	var message = req.body.message || null;
-	console.log('/buy req.body.buyername, req.body.message: ',
-			buyername,
-			message);
 	Wish.findOne({_id:id},function(err,wish){
 		console.log('found wish: ',wish);
 		wish.purchased = true;
 		wish.buyername = buyername;
 		wish.message = message;
+		
+		var wishOwner = wish.username;
+		console.log('wishOwner:', wishOwner);
+		User.findOne({username:wishOwner},function(err,user){
+			console.log('found wish owner data: ',user);
+			user.loginMessage = 'Somebody loves you! A wish has been fulfilled.';
+			user.save(function(err){
+				if (!err){
+					console.log('login message updated! user data: ',user);
+				}
+			});
+
+		});
+
 		wish.save(function(err){
 			if (err) {
 				console.log('error updating purchased wish with buyername/message:', err);
