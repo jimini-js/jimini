@@ -28,7 +28,11 @@ class Item extends React.Component {
   render(){
     let changeButton;
     let thumbnailInstance;
-    let isPurchased = this.props.isPurchased.toString();
+    let isPurchased = this.props.isPurchased ? (
+      <div>
+        <p>Purchased by:{this.props.buyername}</p>
+        <p>Message:{this.props.message}</p>
+      </div>) : null;
     let source = {
       Books: '../assets/books.png',
       Clothing: '../assets/clothing.png',
@@ -45,28 +49,22 @@ class Item extends React.Component {
     if (this.props.isLoggedIn) {
       thumbnailInstance = (
         <Col xs={6} md={4}>
-          <Thumbnail>
+          <Thumbnail className='item'>
             <h2>{this.props.itemname}</h2>
-            <div>
             <img className='categoryImgProfile' src={source[this.props.category]} />
-            </div>
             <p>{this.props.category}</p>
-            <p>Bought: {isPurchased}</p>
-            <p>Purchased by:{this.props.buyername}</p>
-            <p>Message:{this.props.message}</p>
+            {isPurchased}
             <a href={this.props.url}>{this.props.url}</a>
-            <button type='button' className='btn btn-info' onClick={this.handleRemove}>Remove Item</button>
+            <button type='button' className='btn btn-info' onClick={this.handleRemove}><span className='glyphicon glyphicon-remove'></span>Remove Item</button>
           </Thumbnail>
         </Col>
       )
     } else {
       thumbnailInstance = (
         <Col xs={6} md={4}>
-          <Thumbnail>
+          <Thumbnail className='item'>
             <h2>{this.props.itemname}</h2>
-            <div>
             <img className='categoryImgPublic' src={source[this.props.category]} />
-            </div>
             <p>{this.props.category}</p>
             <p>{this.props.message}</p>
             <a href={this.props.url}>{this.props.url}</a>
