@@ -54,6 +54,8 @@ class Item extends React.Component {
             <img className='categoryImgProfile' src={source[this.props.category]} />
             <p>{this.props.category}</p>
             {isPurchased}
+            <p>{this.props.description}</p>
+            <p>{this.props.message}</p>
             <a href={this.props.url}>{this.props.url}</a>
             <button type='button' className='btn btn-info' onClick={this.handleRemove}><span className='glyphicon glyphicon-remove'></span>Remove Item</button>
           </Thumbnail>
@@ -66,7 +68,7 @@ class Item extends React.Component {
             <h2>{this.props.itemname}</h2>
             <img className='categoryImgPublic' src={source[this.props.category]} />
             <p>{this.props.category}</p>
-            <p>{this.props.message}</p>
+            <p>{this.props.description}</p>
             <a href={this.props.url}>{this.props.url}</a>
             <div>
               <input type='text' placeholder='Name' id={'name'+this.props.id} />
