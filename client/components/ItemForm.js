@@ -41,6 +41,10 @@ class ItemForm extends React.Component {
     let itemname = this.itemnameRef.value;
     let category = this.categoryRef;
     let url = this.urlRef.value;
+    console.log('substring',url.substring(0,5));
+    if (url.substring(0,4)!=='http'){
+      url='http://'+url;
+    }
     let message = this.messageRef.value;
     let self = this;
 
