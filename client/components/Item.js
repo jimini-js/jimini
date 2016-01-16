@@ -41,6 +41,9 @@ class Item extends React.Component {
     console.log(name, message);
 
     this.props.markAsBought(wishId,name,message);
+
+    $('#name'+wishId).val('');
+    $('#message'+wishId).val('');
   }
 
   render(){
