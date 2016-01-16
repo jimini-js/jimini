@@ -1,3 +1,28 @@
 * {
   font-family: 'Gudea', sans-serif;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: block;
+  background-color:  white;
+  border-color: white;
+  text-align: center;
+  height: 50px;
+  width: 100%;
+  padding-top: 20px;
+
+}
+
+.footer-elements {
+  margin-left: 30px;
+}
+
+.footer-container {
+  bottom: 0;
+}
+
+.wishlist_footer_space {
+  height: 50px;
+}
