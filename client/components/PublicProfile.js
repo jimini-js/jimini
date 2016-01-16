@@ -6,11 +6,13 @@ import $ from 'jquery';
 class PublicProfile extends React.Component {
   constructor(){
     super();
+    this.setGiftIcon = this.setGiftIcon.bind(this);
     this.getUsernameRef = this.getUsernameRef.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.state = {
       username: '',
-      wishlist: []
+      wishlist: [],
+      giftIcon: {}
     }
   }
 
@@ -37,12 +39,22 @@ class PublicProfile extends React.Component {
       });
     }
 
+    this.setGiftIcon();
+    console.log("gift icon:", this.state.giftIcon);
+  }
+
+  setGiftIcon(){
+    let self = this;
+    console.log("fetching icons")
+
     $.ajax({
       url: '/confirmation',
       type: 'GET',
       contentType: 'application/json',
       success: function(data){
-        console.log('icons:', data);
+        self.setState({
+          giftIcon: data
+        });
       },
       error: function(err){
         console.log('error', err);
