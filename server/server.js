@@ -127,6 +127,7 @@ app.post('/signup', function(req, res) {
 			var user = User({
 				username: username,
 				password: hash,
+				loginMessage: ''
 			});
 
 			user.save(function(err, user) {
