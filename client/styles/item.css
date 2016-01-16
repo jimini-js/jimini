@@ -1,11 +1,18 @@
-.categoryImgProfile {
-  display: block;
-  height: 200px;
-  width: 200px;
-  margin: 0 auto;
+.item h2{
+  text-align: center;
+  word-wrap: break-word;
 }
 
-.categoryImgPublic {
+.item .categoryImgProfile {
+  display: block;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border-style: 1 px solid black;
+}
+
+.item .categoryImgPublic {
   display: block;
   height: 200px;
   width: 200px;
