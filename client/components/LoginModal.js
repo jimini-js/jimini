@@ -11,7 +11,10 @@ class LoginModal extends React.Component {
   render(){
   	return (
   		<Modal show={this.props.showModal}>
-  			<Modal.Title>Somebody loves you!</Modal.Title>
+  			<Modal.Title>Someone loves you!</Modal.Title>
+        <Modal.Body>
+          <h3>Congratulations! A wish has been fulfilled.</h3>
+        </Modal.Body>
   			<Modal.Footer>
   				<Button onClick={this.props.close}>Close</Button>
   			</Modal.Footer>
