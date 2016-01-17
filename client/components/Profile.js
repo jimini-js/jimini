@@ -90,6 +90,7 @@ class Profile extends React.Component {
         </div>
         <div className="jumbotron-header">
           <h1>Welcome {userName}</h1>
+          <h2>to your wishlist</h2>
         </div>
         <div className='row'>
           <div className='col-md-12'>

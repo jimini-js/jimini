@@ -76,21 +76,31 @@ class ItemForm extends React.Component {
 
   render(){
     return (
-      <form ref='form'>
-        <label>Item</label>
-          <input type='text' name='itemname' className='form-control' placeholder='Item Name' ref={this.getItemnameRef} />
-        <label>Category</label>
-          <Categories getCategoryRef={this.getCategoryRef} />
-        <div className='form-group'>
-          <label>Description</label>
-          <input type='text' name='message' className='form-control' placeholder='Description' ref={this.getMessageRef} />
-        </div>
-        <div className='form-group'>
-          <label>Link</label>
-          <input type='url' name='url' className='form-control' placeholder='Enter URL Here' ref={this.getUrlRef} />
-        </div>
-        <button type='submit' className='btn btn-primary' onClick={this.handleSubmit}>Submit</button>
-      </form>
+      <div className="itemform">
+        <form ref='form'>
+          <div className="row">
+            <div className="col-sm-10 col-md-8 itemdescription">
+             <div className="form-group">
+                <label>Item</label>
+                  <input type='text' name='itemname' className='form-control' placeholder='Item Name' ref={this.getItemnameRef} />
+              </div>
+              <div className='form-group'>
+                <label>Description</label>
+                <textarea type='text' name='message' rows='5' className='form-control' id='description' placeholder='Description' ref={this.getMessageRef}></textarea>
+              </div>
+              <div className='form-group'>
+                <label>URL</label>
+                <input type='url' name='url' className='form-control' placeholder='URL' ref={this.getUrlRef} />
+              </div>
+            </div>
+            <div className="col-sm-10 col-md-4">
+              <label>Category</label>
+              <Categories getCategoryRef={this.getCategoryRef} />
+              <button type='submit' className='btn btn-primary' onClick={this.handleSubmit}>Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
     )
   }
 }

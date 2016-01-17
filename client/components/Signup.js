@@ -79,7 +79,7 @@ class Signup extends React.Component {
               <input type="password" className="form-control" placeholder="Password" ref={this.getPassRef} />
             </div>
             <div className="form-group col-sm-10 col-md-push-1">
-              <input type="text" className="form-control" placeholder="Email" ref={this.getEmailRef} />
+              <input type="email" className="form-control" placeholder="Email" ref={this.getEmailRef} />
             </div>
             <div className="form-group col-sm-10 col-md-push-1">
               <button type="submit" className="btn btn-block">Sign up</button>

@@ -75,8 +75,31 @@ a:hover {
   text-align: center;
   font-size: 65px;
   color: #000;
-  padding-top: 5%;
+  padding-top: 55px;
   text-shadow: 2px 2px 40px #969696; }
+
+.profile .jumbotron-header h2 {
+  font-family: "Nothing You Could Do", cursive;
+  color: #ffbf43;
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold; }
+
+.itemform .itemdescription input,
+.itemform textarea {
+  padding: 10px;
+  border-radius: 0; }
+
+.itemform .label {
+  font-size: 20px;
+  font-weight: bold; }
+
+.itemform #description {
+  display: block;
+  width: 100%;
+  height: 100px;
+  vertical-align: top;
+  resize: none; }
 
 .footer {
   display: block;
