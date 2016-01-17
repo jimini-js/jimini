@@ -15,10 +15,10 @@ class Footer extends React.Component {
               <a href="https://www.linkedin.com/in/daisytsao" target="_blank"><i className="fa fa-linkedin"></i></a>
             <span className="footer-elements">Carl Bernardo&nbsp;</span>
               <a href="https://github.com/carlbernardo" target="_blank"><i className="fa fa-github"></i></a>&nbsp;
-              <a href="https://www.linkedin.com/in/" target="_blank"><i className="fa fa-linkedin"></i></a>
+              <a href="https://www.linkedin.com/in/carlbernardo" target="_blank"><i className="fa fa-linkedin"></i></a>
             <span className="footer-elements">Shin Adachi&nbsp;</span>
               <a href="https://github.com/shin064" target="_blank"><i className="fa fa-github"></i></a>&nbsp;
-              <a href="https://www.linkedin.com/in/" target="_blank"><i className="fa fa-linkedin"></i></a>
+              <a href="http://www.shinadachi.com" target="_blank"><i className="fa fa-linkedin"></i></a>
             <span className="footer-elements">Charles Meredith&nbsp;</span>
               <a href="https://github.com/chas3m" target="_blank"><i className="fa fa-github"></i></a>&nbsp;
               <a href="https://www.linkedin.com/in/charlesmeredith1" target="_blank"><i className="fa fa-linkedin"></i></a>
