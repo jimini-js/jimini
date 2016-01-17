@@ -1,6 +1,7 @@
 import React from 'react';
 import Wishlist from './Wishlist.js';
 import ItemForm from './ItemForm.js';
+import LoginModal from './LoginModal.js';
 import $ from 'jquery';
 
 class Profile extends React.Component {
@@ -11,7 +12,8 @@ class Profile extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.state = {
       username: '',
-      wishlist: []
+      wishlist: [],
+      showModal: false
     }
   }
 
@@ -70,6 +72,12 @@ class Profile extends React.Component {
     this.props.updateView('showHome');
   }
 
+  // close(){
+  //   this.setState({
+  //     showModal: false
+  //   })
+  // }
+
   render(){
     return (
       <div>
@@ -77,7 +85,7 @@ class Profile extends React.Component {
         <h1>Logged In Profile Page | Welcome {this.state.username}</h1>
         <div className='row'>
           <div className='col-md-12'>
-            <ItemForm userInfo={this.props.userInfo} updateWishlist={this.updateWishlist}/>
+            <ItemForm userInfo={this.props.userInfo} updateWishlist={this.updateWishlist} />
           </div>
         </div>
         <Wishlist wishlist={this.state.wishlist} isLoggedIn={this.props.isLoggedIn} updateWishlist={this.updateWishlist} />

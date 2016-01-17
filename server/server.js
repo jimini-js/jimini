@@ -62,25 +62,20 @@ app.set('superSecret', jwtSecret);
 function authenticate(req, res, next){
 	//checks for token in request
   	var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  		console.log('in auth mw - token exists', token);
-	  // console.log('in auth mw - req.headers: ', req.headers);
 	  if (token) {
 
 
 	  	// verify token validity - if valid, next()'' if not, return success: false
 	    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
 	      if (err) {
-	      	console.log(' in auth mw - err verifying token:', err);
 	        return res.json({ success: false, message: 'Failed to authenticate token.' });
 	      } else {
-	      	console.log('in auth mw - successfully verified token:', decoded);
 	        req.decoded = decoded;
 	        next();
 	      }
 	    });
 
 	  } else {
-	  	console.log('in auth mw - no token provided')
 	    return res.status(403).send({
 	        success: false,
 	        message: 'No token provided.'
@@ -97,19 +92,24 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 app.use(bodyParser.json());
 
+app.post('/emptyLoginMessage', function(req,res){
+	var username = req.body.username;
+	User.findOne({username:username},function(err,user){
+		user.loginMessage='';
+		user.save();
+		res.end();
+	})
+
+})
+
 app.post('/authenticate', function(req, res) {
 	var token = req.body.token || req.query.token || req.headers['x-access-token'];
 	var decoded = jwt.decode(token);
 	var username = decoded._doc.username;
-    console.log('this is the decoded token:', decoded);
-	console.log('in /auth - token exists', token);
-	console.log('in /auth - this is username: ',username )
 	User.findOne({username: username}, function (err, username) {
 		if (err) {
 			res.send('InvalidToken');
-			console.log('err in /authenticate: ', err);
 		} else {
-			console.log('***success/authenticate username', username);
 			res.json({username: username});
 		};
 	});
@@ -139,7 +139,6 @@ app.post('/signup', function(req, res) {
 					console.log('user was saved:', user);
 					//create token
 					var token = jwt.sign(user, app.get('superSecret'), { expiresInminutes:1440 });
-					console.log('after user saved, this token was created:', token)
 					//send token
 					res.json({
 						success: true,
@@ -183,7 +182,6 @@ app.post('/login', function(req, res){
 
 	      	bcrypt.compare(password, user.password, function(err, loggedin) {
 	      		if (loggedin) {
-	      			console.log ('you are logged in!');
 	      			var token = jwt.sign(user, app.get('superSecret'), {
 			          expiresInMinutes: 1440 // expires in 24 hours
 			        });
@@ -197,13 +195,11 @@ app.post('/login', function(req, res){
 			          loginMessage: loginMessage
 			        });
 	      		} else {
-	      			console.log ('wrong username/password!');
 	      			res.send('InvalidPassword');
 	      		}
 	      	})
 
 	    } else {
-	    	console.log('user does not exist');
 	    	res.send('InvalidUser');
 	    }
 	});
@@ -216,12 +212,6 @@ app.post('/wishlist', function(req, res){
 	var category = req.body.category;
 	var link = req.body.link;
 	var description = req.body.description;
-	console.log('all info for wish in post request: ',
-			username,
-			wishname,
-			category,
-			link,
-			description);
 	var wish = Wish({
 		username: username,
         wishname: wishname,
@@ -276,24 +266,20 @@ app.put('/editwish', function(req, res){
 
 //**********MARKS ITEM AS PURCHASED, SAVES BUYER INFO
 app.put('/buy', function(req,res){
-	console.log('handling PUT request to /buy');
 	var id = req.body.id;
 	var buyername = req.body.buyername || null;
 	var message = req.body.message || null;
 	Wish.findOne({_id:id},function(err,wish){
-		console.log('found wish: ',wish);
 		wish.purchased = true;
 		wish.buyername = buyername;
 		wish.message = message;
 		
 		var wishOwner = wish.username;
-		console.log('wishOwner:', wishOwner);
 		User.findOne({username:wishOwner},function(err,user){
-			console.log('found wish owner data: ',user);
 			user.loginMessage = 'Somebody loves you! A wish has been fulfilled.';
 			user.save(function(err){
 				if (!err){
-					console.log('login message updated! user data: ',user);
+
 				}
 			});
 
@@ -303,7 +289,6 @@ app.put('/buy', function(req,res){
 			if (err) {
 				console.log('error updating purchased wish with buyername/message:', err);
 			} else {
-				console.log('updated purchased wish... success!', wish);
 				res.send(wish);
 			};
 		});
@@ -314,14 +299,11 @@ app.put('/buy', function(req,res){
 app.get('/allwishes', function(req, res){
 	var username = req.query.username;
 
-	console.log('username that we queried for wishes: ',
-			username);
 
 	Wish.find({ username: username }, function(err, wish) {
 		if (err) {
 			console.log('error getting all wishes for user:', err)
 		} else {
-			console.log('found all users wishes.. success!', wish)
 			res.send(wish);
 		}
 	});
@@ -329,8 +311,6 @@ app.get('/allwishes', function(req, res){
 
 
 app.delete('/wish', function(req,res){
-	console.log('handling DELETE request to /wish');
-	console.log('req.body.id: ', req.body.id);
 	var id = req.body.id;
 	Wish.find({_id:id}).remove(function(err,removed){
 		res.send(removed.result);
