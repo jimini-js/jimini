@@ -68,9 +68,11 @@ class Main extends React.Component {
         self.setState({showProfile: true});
         if (data.loginMessage === ''){
           self.setState({showLoginModal:false});
+          console.log('NOT showing login modal');
         }
         else{
           self.setState({showLoginModal:true});
+          console.log('showing login modal');
         }
         self.setState({showPublicProfile: false});
         self.setState({userInfo: { username: data.username }});
