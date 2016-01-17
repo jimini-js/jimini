@@ -7,6 +7,7 @@ class PurchaseConfirmation extends React.Component {
     super();
     this.handleClick = this.handleClick.bind(this);
   }
+  
   handleClick(){
     this.props.handleBought();
     this.props.close();
@@ -35,7 +36,7 @@ class PurchaseConfirmation extends React.Component {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.handleClick}>Confirm</Button>
+          <Button onClick={this.handleClick}>Confirm</Button>
         </Modal.Footer>
       </Modal>
     )
