@@ -74,6 +74,15 @@ class Main extends React.Component {
         else{
           self.setState({showModal:true});
           console.log('showing login modal');
+          $.ajax({
+            url: '/emptyLoginMessage',
+            data: JSON.stringify(data),
+            type: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            success:function(){},
+            error:function(){}
+          })
         }
         self.setState({showPublicProfile: false});
         self.setState({userInfo: { username: data.username }});
