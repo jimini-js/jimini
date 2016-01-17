@@ -51,8 +51,8 @@ class Item extends React.Component {
     let thumbnailInstance;
     let isPurchased = this.props.isPurchased ? (
       <div>
-        <p>Purchased by:{this.props.buyername}</p>
-        <p>Message:{this.props.message}</p>
+        <p>Purchased by: {this.props.buyername}</p>
+        <p>Message: {this.props.message}</p>
       </div>) : null;
     let source = {
       'Books': '../assets/books.png',
@@ -73,11 +73,11 @@ class Item extends React.Component {
           <Thumbnail className='item'>
             <h2>{this.props.itemname}</h2>
             <img className='categoryImgProfile' src={source[this.props.category]} />
-            <p>{this.props.category}</p>
+            <p>Description: {this.props.description}</p>
+            <p><a href={this.props.url}>{this.props.url}</a></p>
+            <p></p>
             {isPurchased}
-            <p>{this.props.description}</p>
-            <a href={this.props.url}>{this.props.url}</a>
-            <button type='button' className='btn btn-info' onClick={this.handleRemove}><span className='glyphicon glyphicon-remove'></span>Remove Item</button>
+            <p><button type='button' className='btn btn-info' onClick={this.handleRemove}><span className='glyphicon glyphicon-remove'></span>Remove Item</button></p>
           </Thumbnail>
         </Col>
       )
