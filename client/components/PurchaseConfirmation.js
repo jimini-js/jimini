@@ -5,6 +5,11 @@ import { Modal, Button } from 'react-bootstrap';
 class PurchaseConfirmation extends React.Component {
   constructor(){
     super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(){
+    this.props.handleBought();
+    this.props.close();
   }
 
   render(){
@@ -24,14 +29,13 @@ class PurchaseConfirmation extends React.Component {
           </div>
           <form>
           <label>Let them know who bought it:</label>
-            <input type='text' placeholder='Name' className='form-control' id={'name'+this.props.id} />
-          <label>Leave them a message(optional):</label>
-            <input type='text' placeholder='Message' className='form-control' id={'message'+this.props.id} />
+            <input type='text' placeholder='Optional' className='form-control' id={'name'+this.props.id} />
+          <label>Leave them a message:</label>
+            <input type='text' placeholder='Optional' className='form-control' id={'message'+this.props.id} />
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.handleBought}>Purchase</Button>
-          <Button onClick={this.props.close}>Close</Button>
+          <Button onClick={this.props.handleClick}>Confirm</Button>
         </Modal.Footer>
       </Modal>
     )
