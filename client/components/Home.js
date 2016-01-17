@@ -27,8 +27,15 @@ class Home extends React.Component {
     }
 
     return (
-      <div>
-        {viewBox}
+      <div className="home">
+        <div className='row'>
+          <div className='col-sm-12 col-md-8'>
+            <div className="slideshow">
+              <img src='./../assets/mbpro-black.png' />
+            </div>
+          </div>
+            {viewBox}
+        </div>
       </div>
     )
   }

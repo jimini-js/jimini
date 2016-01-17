@@ -60,20 +60,22 @@ class Login extends React.Component {
 
   render(){
     return (
-      <div className="col-sm-12">
-        <h1>Login</h1>
-        <button onClick={this.props.handleClick} className="btn btn-block btn-primary">Don't have an account? Click here to sign up.</button>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group col-sm-7">
-            <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />
-          </div>
-          <div className="form-group col-sm-7">
-            <input type="text" className="form-control" placeholder="Password" ref={this.getPassRef} />
-          </div>
-          <div className="form-group col-sm-7">
-            <button type="submit" className="btn btn-block btn-primary">Log in</button>
-          </div>
-        </form>
+      <div className="login col-sm-12 col-md-4 col-md-pull-1">
+        <div className="viewbox">
+          <img className="logo" src="./../assets/jimini-logo.png" alt="Jimini Logo" />
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group col-sm-10 col-md-push-1">
+              <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />
+            </div>
+            <div className="form-group col-sm-10 col-md-push-1">
+              <input type="text" className="form-control" placeholder="Password" ref={this.getPassRef} />
+            </div>
+            <div className="form-group col-sm-10 col-md-push-1">
+              <button type="submit" className="btn btn-block">Log in</button>
+              <div onClick={this.props.handleClick}>Don't have an account? Click <a>here</a> to sign up.</div>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

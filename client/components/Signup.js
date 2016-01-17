@@ -68,7 +68,7 @@ class Signup extends React.Component {
   render(){
 
     return (
-      <div className="col-sm-12">
+      <div className="signup col-sm-12">
         <h1>Sign up</h1>
         <button onClick={this.props.handleClick} className="btn btn-block btn-primary">Have an account? Click here to log in.</button>
         <form onSubmit={this.handleSubmit}>

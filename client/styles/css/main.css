@@ -1,0 +1,67 @@
+html {
+  box-sizing: border-box;
+  background-color: #FAFAFA; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+button {
+  background-color: #ffbf43; }
+
+* {
+  font-family: "Gudea", sans-serif; }
+
+a {
+  color: #ffbf43; }
+
+.home {
+  margin-top: 50px;
+  background-color: #FAFAFA; }
+
+.home img {
+  height: auto;
+  max-width: 700px;
+  width: 100%; }
+
+.viewbox {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  max-height: 650px;
+  margin: 30px;
+  padding: 20px;
+  background-color: #FFF;
+  border: 1px solid #edeeee;
+  text-align: center; }
+
+.viewbox .logo {
+  display: inline-block;
+  width: 150px;
+  height: auto; }
+
+.viewbox input {
+  margin: 0;
+  border-radius: 0; }
+
+.signup {
+  background-color: purple; }
+
+.footer {
+  display: block;
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 50px 0 20px 0;
+  text-align: center; }
+
+i {
+  color: #ffbf43; }
+
+.footer-elements {
+  margin-left: 30px; }
+
+.footer-container {
+  bottom: 0; }
+
+.wishlist_footer_space {
+  height: 50px; }

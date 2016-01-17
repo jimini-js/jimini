@@ -5,7 +5,9 @@
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/server.js"
+    "start": "nodemon server/server.js",
+    "build-css": "node-sass --include-path scss client/styles/scss/main.scss client/styles/css/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,8 @@
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.1",
     "babel-preset-react": "^6.3.13",
+    "node-libs-browser": "^0.5.3",
+    "node-sass": "^3.4.2",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "webpack": "^1.12.10"

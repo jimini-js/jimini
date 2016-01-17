@@ -1,18 +1,14 @@
-* {
-  font-family: 'Gudea', sans-serif;
-}
-
 .footer {
-  position: fixed;
-  bottom: 0;
   display: block;
-  background-color:  white;
-  border-color: white;
-  text-align: center;
   height: 50px;
   width: 100%;
-  padding-top: 20px;
+  margin-top:20px;
+  padding: 50px 0 20px 0;
+  text-align: center;
+}
 
+i {
+  color:$med-accent-color;
 }
 
 .footer-elements {
