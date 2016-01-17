@@ -76,7 +76,7 @@ class Signup extends React.Component {
               <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />
             </div>
             <div className="form-group col-sm-10 col-md-push-1">
-              <input type="text" className="form-control" placeholder="Password" ref={this.getPassRef} />
+              <input type="password" className="form-control" placeholder="Password" ref={this.getPassRef} />
             </div>
             <div className="form-group col-sm-10 col-md-push-1">
               <input type="text" className="form-control" placeholder="Email" ref={this.getEmailRef} />

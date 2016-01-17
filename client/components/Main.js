@@ -102,7 +102,7 @@ class Main extends React.Component {
 
   render(){
     return (
-      <div className='home'>
+      <div className='main'>
         <div className='container'>
           {this.state.showHome ? <Home updateView={this.updateView} /> : null}
           {this.state.showModal ? (

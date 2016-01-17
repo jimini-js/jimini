@@ -8,17 +8,21 @@ html {
 button {
   background-color: #ffbf43; }
 
-* {
-  font-family: "Gudea", sans-serif; }
+body {
+  font-family: "Nothing You Could Do", cursive; }
 
 a {
   color: #ffbf43; }
 
-.home {
+a:hover {
+  color: #ffbf43;
+  cursor: pointer; }
+
+.main {
   margin-top: 50px;
   background-color: #FAFAFA; }
 
-.home img {
+.main img {
   height: auto;
   max-width: 700px;
   width: 100%; }
@@ -43,6 +47,37 @@ a {
   margin: 0;
   border-radius: 0; }
 
+.profile .nav {
+  display: block;
+  margin: 0; }
+
+.profile .nav img {
+  display: inline-block;
+  width: 100px;
+  height: auto; }
+
+.profile .nav a {
+  padding: 10px;
+  font-size: 20px;
+  float: right; }
+
+.profile .jumbotron-header {
+  width: 100%;
+  min-width: 300px;
+  min-height: 250px;
+  max-height: 350px;
+  height: auto;
+  background-image: url("../../assets/jimini-background.png"); }
+
+.profile .jumbotron-header h1 {
+  font-family: "Pacifico", cursive;
+  display: block;
+  text-align: center;
+  font-size: 65px;
+  color: #000;
+  padding-top: 5%;
+  text-shadow: 2px 2px 40px #969696; }
+
 .footer {
   display: block;
   height: 50px;
@@ -59,6 +94,3 @@ i {
 
 .footer-container {
   bottom: 0; }
-
-.wishlist_footer_space {
-  height: 50px; }

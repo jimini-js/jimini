@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/server.js",
-    "build-css": "node-sass --include-path scss client/styles/scss/main.scss client/styles/css/main.css",
+    "build-css": "node-sass --include-path scss client/styles/scss/import.scss client/styles/css/main.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "repository": {
