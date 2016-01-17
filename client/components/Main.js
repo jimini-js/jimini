@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Home.js';
 import Profile from './Profile.js';
 import PublicProfile from './PublicProfile.js';
+import LoginModal from './LoginModal.js';
 import Footer from './Footer.js';
 import $ from 'jquery';
 
@@ -65,6 +66,12 @@ class Main extends React.Component {
         self.setState({isLoggedIn: true});
         self.setState({showHome: false});
         self.setState({showProfile: true});
+        if (data.loginMessage === ''){
+          self.setState({showLoginModal:false});
+        }
+        else{
+          self.setState({showLoginModal:true});
+        }
         self.setState({showPublicProfile: false});
         self.setState({userInfo: { username: data.username }});
         break;
@@ -83,6 +90,11 @@ class Main extends React.Component {
         <h1>Jimini</h1>
         <div className='container'>
           {this.state.showHome ? <Home updateView={this.updateView} /> : null}
+          {this.state.showLoginModal ? (
+            <LoginModal 
+            showModal={this.state.showLoginModal}
+            close={this.close}/>
+          ):null}
           {this.state.showProfile ? <Profile updateView={this.updateView} userInfo={this.state.userInfo} isLoggedIn={this.state.isLoggedIn} /> : null}
           {this.state.showPublicProfile ? <PublicProfile updateView={this.updateView} /> : null}
         </div>
