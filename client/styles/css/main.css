@@ -213,6 +213,13 @@ a:hover {
 .modalbody label {
   font-size: 20px; }
 
+.home .slideshow #screen {
+  position: absolute;
+  top: 55px;
+  left: 130px;
+  width: 475px;
+  height: 300px; }
+
 .footer {
   display: block;
   height: 50px;

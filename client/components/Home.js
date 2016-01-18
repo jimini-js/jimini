@@ -31,6 +31,7 @@ class Home extends React.Component {
         <div className='row'>
           <div className='col-sm-12 col-md-8'>
             <div className="slideshow">
+              <img src='./../assets/jimini_search.gif' id='screen' />
               <img src='./../assets/mbpro-black.png' />
             </div>
           </div>
