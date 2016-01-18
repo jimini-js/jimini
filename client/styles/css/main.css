@@ -86,7 +86,7 @@ a:hover {
   font-weight: bold; }
 
 .itemform .itemdescription input,
-.itemform textarea {
+.itemform .itemdescription textarea {
   padding: 10px;
   border-radius: 0; }
 
@@ -101,11 +101,70 @@ a:hover {
   vertical-align: top;
   resize: none; }
 
+.itemform .item-btn {
+  display: block;
+  margin-top: 15px;
+  background-color: #ffbf43;
+  border-color: #fff;
+  color: #000; }
+
+.categories .category {
+  border-radius: 50%; }
+
+.categories img {
+  display: inline-block;
+  width: 50px;
+  height: 50px; }
+
+.wishlist h3 {
+  display: inline-block; }
+
+.wishlist .filter {
+  display: inline-block;
+  float: right; }
+
+.item {
+  border: 1px solid #ababab;
+  background-color: #FFF;
+  border-radius: 5px;
+  height: 250px;
+  overflow: auto;
+  margin-top: 25px; }
+  .item button,
+  .item button:hover {
+    display: block;
+    background-color: #ffbf43;
+    border-color: #fff; }
+  .item img {
+    display: inline-block;
+    margin: 20px;
+    width: 20%;
+    height: auto; }
+  .item .single-item-description {
+    display: inline-block;
+    width: 60%;
+    margin-top: 10px; }
+  .item h4 {
+    font-family: "Pacifico", cursive;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold; }
+  .item h5 {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: underline; }
+  .item p {
+    font-size: 14px; }
+  .item a {
+    display: relative;
+    float: right;
+    bottom: 0; }
+
 .footer {
   display: block;
   height: 50px;
   width: 100%;
-  margin-top: 20px;
+  margin: 20px 0;
   padding: 50px 0 20px 0;
   text-align: center; }
 
@@ -114,6 +173,3 @@ i {
 
 .footer-elements {
   margin-left: 30px; }
-
-.footer-container {
-  bottom: 0; }

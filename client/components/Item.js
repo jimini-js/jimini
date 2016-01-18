@@ -51,8 +51,8 @@ class Item extends React.Component {
     let thumbnailInstance;
     let isPurchased = this.props.isPurchased ? (
       <div>
-        <p>Purchased by: {this.props.buyername}</p>
-        <p>Message: {this.props.message}</p>
+        <h5>Message:</h5>
+        <p>{this.props.message} -{this.props.buyername}</p>
       </div>) : null;
     let source = {
       'Books': '../assets/books.png',
@@ -69,16 +69,18 @@ class Item extends React.Component {
 
     if (this.props.isLoggedIn) {
       thumbnailInstance = (
-        <Col xs={6} md={4}>
-          <Thumbnail className='item'>
-            <h2>{this.props.itemname}</h2>
+        <Col xs={6} md={6}>
+          <div className='item'>
+            <button type='button' className='btn btn-info' onClick={this.handleRemove}><span className='glyphicon glyphicon-remove'></span></button>
             <img className='categoryImgProfile' src={source[this.props.category]} />
-            <p>Description: {this.props.description}</p>
-            <p><a href={this.props.url}>{this.props.url}</a></p>
-            <p></p>
-            {isPurchased}
-            <p><button type='button' className='btn btn-info' onClick={this.handleRemove}><span className='glyphicon glyphicon-remove'></span>Remove Item</button></p>
-          </Thumbnail>
+            <div className="single-item-description">
+              <h4>{this.props.itemname}</h4>
+              <h5>Description:</h5>
+              <p>{this.props.description}</p>
+              {isPurchased}
+              <a href={this.props.url}>{this.props.url}</a>
+            </div>
+          </div>
         </Col>
       )
     } else {

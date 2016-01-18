@@ -1,10 +1,11 @@
 .itemform {
-  .itemdescription input,
-  textarea {
-    padding:10px;
-    border-radius: 0;
+  .itemdescription {
+    input,
+    textarea {
+      padding:10px;
+      border-radius: 0;
+    }
   }
-
   .label {
     font-size:20px;
     font-weight: bold;
@@ -16,5 +17,13 @@
     height:100px;
     vertical-align: top;
     resize:none;
+  }
+
+  .item-btn {
+    display: block;
+    margin-top:15px;
+    background-color: $med-accent-color;
+    border-color: #fff;
+    color:#000;
   }
 }

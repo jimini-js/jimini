@@ -159,8 +159,11 @@ class Wishlist extends React.Component {
     }
 
     return(
-      <div>
-        Wishlist Below: {dropdown}
+      <div className="wishlist">
+        <h3>Wishlist</h3>
+        <div className="filter">
+        Filter By: {dropdown}
+       </div>
         <div className="row">
           {items}
         </div>

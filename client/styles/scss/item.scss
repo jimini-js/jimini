@@ -1,0 +1,49 @@
+.item {
+  border:1px solid #ababab;
+  background-color: $white-color;
+  border-radius:5px;
+  height: 250px;
+  overflow: auto;
+  margin-top: 25px;
+
+  button,
+  button:hover {
+    display: block;
+    background-color: $med-accent-color;
+    border-color:#fff;
+  }
+  img {
+    display: inline-block;
+    margin:20px;
+    width:20%;
+    height:auto;
+  }
+  .single-item-description {
+    display: inline-block;
+    width:60%;
+    margin-top:10px;
+  }
+
+  h4 {
+    font-family: $font-accent;
+    font-size:24px;
+    text-align: center;
+    font-weight:bold;
+  }
+
+  h5 {
+    font-size:18px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  a {
+    display: relative;
+    float:right;
+    bottom: 0;
+  }
+}
