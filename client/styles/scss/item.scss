@@ -14,11 +14,13 @@
     border-color:#fff;
   }
 
-  .purchase {
+  .purchase,
+  .purchase:hover {
     background-color: $med-accent-color;
     float: right;
     margin-right: 25px;
   }
+
   img {
     display: inline-block;
     margin:20px;

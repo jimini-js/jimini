@@ -10,8 +10,8 @@ class PublicProfile extends React.Component {
     this.fetchData = this.fetchData.bind(this);
     this.state = {
       username: '',
-      wishlist: [],
-      giftIcon: {}
+      wishlist: []
+      // giftIcon: {}
     }
   }
 
@@ -38,19 +38,19 @@ class PublicProfile extends React.Component {
       });
     }
 
-    $.ajax({
-      url: '/confirmation',
-      type: 'GET',
-      contentType: 'application/json',
-      success: function(data){
-        self.setState({
-          giftIcon: data
-        });
-      },
-      error: function(err){
-        console.log('error', err);
-      }
-    });
+    // $.ajax({
+    //   url: '/confirmation',
+    //   type: 'GET',
+    //   contentType: 'application/json',
+    //   success: function(data){
+    //     self.setState({
+    //       giftIcon: data
+    //     });
+    //   },
+    //   error: function(err){
+    //     console.log('error', err);
+    //   }
+    // });
 
   }
 
@@ -88,6 +88,7 @@ class PublicProfile extends React.Component {
     return (
       <div className='publicprofile'>
         <div className='publicprofile-jumbotron'>
+        <img src="../assets/jimini-logo.png" alt="jimini logo"/>
         <h1>Find a wishlist</h1>
           <form>
             <input type="text" placeholder="Enter a Name" ref={this.getUsernameRef} />&nbsp;

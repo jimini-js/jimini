@@ -140,7 +140,8 @@ a:hover {
     display: block;
     background-color: #ffbf43;
     border-color: #fff; }
-  .item .purchase {
+  .item .purchase,
+  .item .purchase:hover {
     background-color: #ffbf43;
     float: right;
     margin-right: 25px; }
@@ -190,6 +191,27 @@ a:hover {
     background-color: #000;
     font-color: #fff;
     border-color: #000; }
+  .publicprofile .publicprofile-jumbotron img {
+    display: block;
+    margin-top: -80px;
+    margin-left: 15px;
+    width: 100px;
+    height: auto; }
+
+.modaltitle {
+  font-family: "Pacifico", cursive;
+  font-size: 34px;
+  text-align: center; }
+
+.modalbody h3 {
+  font-weight: bold; }
+
+.modalbody input {
+  margin-bottom: 10px;
+  border-radius: 2px; }
+
+.modalbody label {
+  font-size: 20px; }
 
 .footer {
   display: block;
