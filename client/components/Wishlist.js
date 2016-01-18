@@ -97,6 +97,7 @@ class Wishlist extends React.Component {
 
   render(){
     let items = [];
+    let title;
 
     let dropdown = this.props.isLoggedIn?(
       <DropdownButton title={this.state.show}>
@@ -137,6 +138,8 @@ class Wishlist extends React.Component {
           isPurchased={item.purchased} />
         )
       });
+
+      this.props.isLoggedIn ? title = (<h3>Wishlist</h3>) : null;
     } else {
       this.state.wishlist.forEach((item, ind) => {
         if(!item.purchased){
@@ -160,10 +163,10 @@ class Wishlist extends React.Component {
 
     return(
       <div className="wishlist">
-        <h3>Wishlist</h3>
+        {title}
         <div className="filter">
-        Filter By: {dropdown}
-       </div>
+        {dropdown}
+        </div>
         <div className="row">
           {items}
         </div>

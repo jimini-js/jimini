@@ -86,13 +86,14 @@ class PublicProfile extends React.Component {
 
   render(){
     return (
-      <div>
-        <h1>Public Profile Page</h1>
-        <form>
-          <label>Find a Wishlist</label>&nbsp;
-          <input type="text" placeholder="Enter a Name" ref={this.getUsernameRef} />&nbsp;
-          <button type='submit' className='btn btn-primary' onClick={this.fetchData}>Search</button>
-        </form>
+      <div className='publicprofile'>
+        <div className='publicprofile-jumbotron'>
+        <h1>Find a wishlist</h1>
+          <form>
+            <input type="text" placeholder="Enter a Name" ref={this.getUsernameRef} />&nbsp;
+            <button type='submit' className='btn btn-primary' onClick={this.fetchData}>Search</button>
+          </form>
+        </div>
         <div className='row'>
           <div className='col-md-12'>
             <Wishlist userInfo={this.props.userInfo} wishlist={this.state.wishlist} giftIcon={this.state.giftIcon} />

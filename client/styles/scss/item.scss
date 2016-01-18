@@ -2,8 +2,9 @@
   border:1px solid #ababab;
   background-color: $white-color;
   border-radius:5px;
-  height: 250px;
+  height: 270px;
   overflow: auto;
+  margin-right: 20px;
   margin-top: 25px;
 
   button,
@@ -11,6 +12,12 @@
     display: block;
     background-color: $med-accent-color;
     border-color:#fff;
+  }
+
+  .purchase {
+    background-color: $med-accent-color;
+    float: right;
+    margin-right: 25px;
   }
   img {
     display: inline-block;
@@ -46,4 +53,9 @@
     float:right;
     bottom: 0;
   }
+}
+
+.item-purchase {
+  max-width: 90%;
+  height: 190px;
 }

@@ -69,10 +69,10 @@ class Item extends React.Component {
 
     if (this.props.isLoggedIn) {
       thumbnailInstance = (
-        <Col xs={6} md={6}>
-          <div className='item'>
+        <div>
+          <div className='item col-sm-10 col-md-5 col-md-push-1'>
             <button type='button' className='btn btn-info' onClick={this.handleRemove}><span className='glyphicon glyphicon-remove'></span></button>
-            <img className='categoryImgProfile' src={source[this.props.category]} />
+            <img src={source[this.props.category]} />
             <div className="single-item-description">
               <h4>{this.props.itemname}</h4>
               <h5>Description:</h5>
@@ -81,19 +81,19 @@ class Item extends React.Component {
               <a href={this.props.url}>{this.props.url}</a>
             </div>
           </div>
-        </Col>
+        </div>
       )
     } else {
       thumbnailInstance = (
-        <Col xs={6} md={4}>
-          <Thumbnail className='item'>
-            <h2>{this.props.itemname}</h2>
-            <img className='categoryImgPublic' src={source[this.props.category]} />
-            <p>{this.props.category}</p>
-            <p>{this.props.description}</p>
-            <a href={this.props.url}>{this.props.url}</a>
+        <div className='col-sm-10 col-md-5 col-md-push-1'>
+          <div className='item item-purchase'>
+          <img src={source[this.props.category]} />
+            <div className='single-item-description'>
+              <h4>{this.props.itemname}</h4>
+              <p>{this.props.description}</p>
+            </div>
             <div>
-              <button type='button' className='btn btn-info' onClick={this.open}>Purchase Item</button>
+              <button type='button' className='btn btn-info purchase' onClick={this.open}>Click here for details</button>
               <PurchaseConfirmation
                 showModal={this.state.showModal}
                 close={this.close}
@@ -104,8 +104,8 @@ class Item extends React.Component {
                 id={this.props.id}
                 handleBought={this.handleBought}/>
             </div>
-          </Thumbnail>
-        </Col>
+          </div>
+        </div>
       )
     }
 
