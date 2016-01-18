@@ -1,0 +1,235 @@
+html {
+  box-sizing: border-box;
+  background-color: #FAFAFA; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+button {
+  background-color: #ffbf43; }
+
+body {
+  font-family: "Nothing You Could Do", cursive; }
+
+a {
+  color: #ffbf43; }
+
+a:hover {
+  color: #ffbf43;
+  cursor: pointer; }
+
+.main {
+  margin-top: 50px;
+  background-color: #FAFAFA; }
+
+.main img {
+  height: auto;
+  max-width: 700px;
+  width: 100%; }
+
+.viewbox {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  max-height: 650px;
+  margin: 30px;
+  padding: 20px;
+  background-color: #FFF;
+  border: 1px solid #edeeee;
+  text-align: center; }
+
+.viewbox .logo {
+  display: inline-block;
+  width: 150px;
+  height: auto; }
+
+.viewbox input {
+  margin: 0;
+  border-radius: 0; }
+
+.profile .nav {
+  display: block;
+  margin: 0; }
+
+.profile .nav img {
+  display: inline-block;
+  width: 100px;
+  height: auto; }
+
+.profile .nav a {
+  padding: 10px;
+  font-size: 20px;
+  float: right; }
+
+.profile .jumbotron-header {
+  width: 100%;
+  min-width: 300px;
+  min-height: 250px;
+  max-height: 350px;
+  height: auto;
+  background-image: url("../../assets/jimini-background.png"); }
+
+.profile .jumbotron-header h1 {
+  font-family: "Pacifico", cursive;
+  display: block;
+  text-align: center;
+  font-size: 65px;
+  color: #000;
+  padding-top: 55px;
+  text-shadow: 2px 2px 40px #969696; }
+
+.profile .jumbotron-header h2 {
+  font-family: "Nothing You Could Do", cursive;
+  color: #ffbf43;
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold; }
+
+.itemform h3 {
+  font-size: 34px; }
+
+.itemform .itemdescription input,
+.itemform .itemdescription textarea {
+  padding: 10px;
+  border-radius: 0; }
+
+.itemform .label {
+  font-size: 20px;
+  font-weight: bold; }
+
+.itemform #description {
+  display: block;
+  width: 100%;
+  height: 100px;
+  vertical-align: top;
+  resize: none; }
+
+.itemform .item-btn {
+  display: block;
+  margin-top: 15px;
+  background-color: #ffbf43;
+  border-color: #fff;
+  color: #000; }
+
+.categories .category {
+  border-radius: 50%; }
+
+.categories img {
+  display: inline-block;
+  width: 50px;
+  height: 50px; }
+
+.wishlist h3 {
+  font-size: 34px;
+  display: inline-block; }
+
+.wishlist .filter {
+  display: inline-block;
+  float: right; }
+
+.item {
+  border: 1px solid #ababab;
+  background-color: #FFF;
+  border-radius: 5px;
+  height: 270px;
+  overflow: auto;
+  margin-right: 20px;
+  margin-top: 25px; }
+  .item button,
+  .item button:hover {
+    display: block;
+    background-color: #ffbf43;
+    border-color: #fff; }
+  .item .purchase,
+  .item .purchase:hover {
+    background-color: #ffbf43;
+    float: right;
+    margin-right: 25px; }
+  .item img {
+    display: inline-block;
+    margin: 20px;
+    width: 20%;
+    height: auto; }
+  .item .single-item-description {
+    display: inline-block;
+    width: 60%;
+    margin-top: 10px; }
+  .item h4 {
+    font-family: "Pacifico", cursive;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold; }
+  .item h5 {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: underline; }
+  .item p {
+    font-size: 14px; }
+  .item a {
+    display: relative;
+    float: right;
+    bottom: 0; }
+
+.item-purchase {
+  max-width: 90%;
+  height: 190px; }
+
+.publicprofile .publicprofile-jumbotron {
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  padding-top: 100px;
+  background-color: #ffbf43; }
+  .publicprofile .publicprofile-jumbotron h1 {
+    font-family: "Pacifico", cursive;
+    font-size: 140px; }
+  .publicprofile .publicprofile-jumbotron input {
+    height: 40px;
+    width: 50%;
+    padding: 10px; }
+  .publicprofile .publicprofile-jumbotron button {
+    background-color: #000;
+    font-color: #fff;
+    border-color: #000; }
+  .publicprofile .publicprofile-jumbotron img {
+    display: block;
+    margin-top: -80px;
+    margin-left: 15px;
+    width: 100px;
+    height: auto; }
+
+.modaltitle {
+  font-family: "Pacifico", cursive;
+  font-size: 34px;
+  text-align: center; }
+
+.modalbody h3 {
+  font-weight: bold; }
+
+.modalbody input {
+  margin-bottom: 10px;
+  border-radius: 2px; }
+
+.modalbody label {
+  font-size: 20px; }
+
+.home .slideshow #screen {
+  position: absolute;
+  top: 55px;
+  left: 130px;
+  width: 475px;
+  height: 300px; }
+
+.footer {
+  display: block;
+  height: 50px;
+  width: 100%;
+  margin: 20px 0;
+  padding: 50px 0 20px 0;
+  text-align: center; }
+
+i {
+  color: #ffbf43; }
+
+.footer-elements {
+  margin-left: 30px; }

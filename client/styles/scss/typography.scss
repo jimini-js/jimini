@@ -1,0 +1,16 @@
+$font-primary: 'Nothing You Could Do', cursive;
+$font-accent: 'Pacifico', cursive;
+
+body {
+  font-family: $font-primary;
+}
+
+
+a {
+  color:$med-accent-color;
+}
+
+a:hover {
+  color:$med-accent-color;
+  cursor: pointer;
+}

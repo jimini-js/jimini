@@ -1,0 +1,44 @@
+
+.profile .nav {
+  display:block;
+  margin:0;
+}
+
+.profile .nav img {
+  display: inline-block;
+  width:100px;
+  height:auto;
+}
+
+.profile .nav a {
+  padding:10px;
+  font-size: 20px;
+  float:right;
+}
+
+
+.profile .jumbotron-header {
+  width:100%;
+  min-width:300px;
+  min-height:250px;
+  max-height:350px;
+  height:auto;
+  background-image: url("../../assets/jimini-background.png");
+}
+
+.profile .jumbotron-header h1 {
+  font-family:$font-accent;
+  display: block;
+  text-align: center;
+  font-size: 65px;
+  color:#000;
+  padding-top:55px;
+  text-shadow: 2px 2px 40px rgba(150, 150, 150, 1);
+}
+.profile .jumbotron-header h2 {
+  font-family: $font-primary;
+  color:$med-accent-color;
+  font-size:24px;
+  text-align: center;
+  font-weight: bold;
+}

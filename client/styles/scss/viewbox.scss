@@ -1,0 +1,23 @@
+
+.viewbox {
+  display:inline-block;
+  width:100%;
+  height:auto;
+  max-height:650px;
+  margin:30px;
+  padding:20px;
+  background-color: $white-color;
+  border:1px solid $light-border-color;
+  text-align: center;
+}
+
+.viewbox .logo {
+  display: inline-block;
+  width:150px;
+  height:auto;
+}
+
+.viewbox input {
+  margin:0;
+  border-radius: 0;
+}

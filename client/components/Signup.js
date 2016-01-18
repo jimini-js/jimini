@@ -68,23 +68,27 @@ class Signup extends React.Component {
   render(){
 
     return (
-      <div className="col-sm-12">
-        <h1>Sign up</h1>
-        <button onClick={this.props.handleClick} className="btn btn-block btn-primary">Have an account? Click here to log in.</button>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group col-sm-7">
-            <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />
-          </div>
-          <div className="form-group col-sm-7">
-            <input type="text" className="form-control" placeholder="Password" ref={this.getPassRef} />
-          </div>
-          <div className="form-group col-sm-7">
-            <input type="text" className="form-control" placeholder="Email" ref={this.getEmailRef} />
-          </div>
-          <div className="form-group col-sm-7">
-            <button type="submit" className="btn btn-block btn-primary">Sign up</button>
-          </div>
-        </form>
+      <div className="signup col-sm-12 col-md-4 col-md-pull-1">
+        <div className="viewbox">
+          <img className="logo" src="./../assets/jimini-logo.png" alt="Jimini Logo" />
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group col-sm-10 col-md-push-1">
+              <input type="text" className="form-control" placeholder="Username" ref={this.getUsernameRef} />
+            </div>
+            <div className="form-group col-sm-10 col-md-push-1">
+              <input type="password" className="form-control" placeholder="Password" ref={this.getPassRef} />
+            </div>
+            <div className="form-group col-sm-10 col-md-push-1">
+              <input type="email" className="form-control" placeholder="Email" ref={this.getEmailRef} />
+            </div>
+            <div className="form-group col-sm-10 col-md-push-1">
+              <button type="submit" className="btn btn-block">Sign up</button>
+              <div onClick={this.props.handleClick}>
+              Have an account? Click <a>here</a> to log in.
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

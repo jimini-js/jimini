@@ -79,10 +79,19 @@ class Profile extends React.Component {
   // }
 
   render(){
+    let userName = this.state.username;
+    userName = userName.slice(0,1).toUpperCase() + userName.slice(1);
+
     return (
-      <div>
-        <button className='btn' onClick={this.handleLogout}>Logout</button>
-        <h1>Logged In Profile Page | Welcome {this.state.username}</h1>
+      <div className="profile">
+        <div className="nav">
+         <img src="../assets/jimini-logo.png" alt="jimini logo"/>
+         <a onClick={this.handleLogout}>Logout</a>
+        </div>
+        <div className="jumbotron-header">
+          <h1>Welcome {userName}</h1>
+          <h2>to your wishlist</h2>
+        </div>
         <div className='row'>
           <div className='col-md-12'>
             <ItemForm userInfo={this.props.userInfo} updateWishlist={this.updateWishlist} />
