@@ -276,7 +276,7 @@ app.put('/buy', function(req,res){
 		
 		var wishOwner = wish.username;
 		User.findOne({username:wishOwner},function(err,user){
-			user.loginMessage = 'Somebody loves you! A wish has been fulfilled.';
+			user.loginMessage = 'wish fulfilled';
 			user.save(function(err){
 				if (!err){
 

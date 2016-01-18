@@ -71,7 +71,7 @@ class Main extends React.Component {
           self.setState({showModal:false});
           console.log('NOT showing login modal');
         }
-        else{
+        else if (data.loginMessage === 'wish fulfilled'){
           self.setState({showModal:true});
           console.log('showing login modal');
           $.ajax({
