@@ -85,7 +85,7 @@ function authenticate(req, res, next){
 
 //serves html, authenticates
 app.get('/', function(req, res){
-  res.sendFile(path.join(__dirname, '../client/index.html'))
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 app.use(express.static(path.join(__dirname, '../client')));
@@ -98,8 +98,7 @@ app.post('/emptyLoginMessage', function(req,res){
 		user.loginMessage='';
 		user.save();
 		res.end();
-	})
-
+	});
 })
 
 app.post('/authenticate', function(req, res) {
@@ -161,7 +160,7 @@ function authenticateUser(username, password, callback){
     	console.log('err finding user');
     }
     else {
-    	console.log('found user', user)
+    	console.log('found user', user);
     	callback(err, user);
     }
   });
