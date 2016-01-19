@@ -7,10 +7,10 @@ var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 
 //*****Noun Project api Call dependencies
-var NounProject = require('the-noun-project');
-var nounProjectKey = require('./config/config.js').nounProjectKey;
-var nounProjectSecretKey = require('./config/config.js').nounProjectSecret;
-var nounProjectTest = require('./apis/noun-project-test.json');
+// var NounProject = require('the-noun-project');
+// var nounProjectKey = require('./config/config.js').nounProjectKey;
+// var nounProjectSecretKey = require('./config/config.js').nounProjectSecret;
+// var nounProjectTest = require('./apis/noun-project-test.json');
 
 var app = express();
 var jsonParser = bodyParser.json();
@@ -273,7 +273,7 @@ app.put('/buy', function(req,res){
 		wish.purchased = true;
 		wish.buyername = buyername;
 		wish.message = message;
-		
+
 		var wishOwner = wish.username;
 		User.findOne({username:wishOwner},function(err,user){
 			user.loginMessage = 'wish fulfilled';
@@ -318,20 +318,20 @@ app.delete('/wish', function(req,res){
 });
 
 //*********NOUN PROJECT api call
-app.get('/confirmation', function(req, res){
-	nounProject = new NounProject({
-		key: nounProjectKey,
-		secret: nounProjectSecretKey
-	});
-
-	res.send(nounProjectTest);
+// app.get('/confirmation', function(req, res){
+// 	nounProject = new NounProject({
+// 		key: nounProjectKey,
+// 		secret: nounProjectSecretKey
+// 	});
+//
+// 	res.send(nounProjectTest);
 
 	// nounProject.getIconByTerm('gifts', function (err, data) {
   //   if (!err) {
   //       res.send(data);
   //   }
 	// });
-});
+// });
 
 
 app.listen(port);
