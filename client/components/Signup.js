@@ -84,6 +84,8 @@ class Signup extends React.Component {
               <div onClick={this.props.handleClick}>
               Have an account? Click <a>here</a> to log in.
               </div>
+              <br></br>
+              <div>Looking for a friend's wishlist? Click <a href={document.URL+'/search'}>here</a> to search for a user.</div>
             </div>
           </form>
         </div>
