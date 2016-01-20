@@ -34,10 +34,9 @@ class Main extends React.Component {
           token: localStorage.token
         }),
         success: function(data){
-          if(data.responseText === 'InvalidToken' || data.responseText === 'InvalidToken'){
+          if (data.responseText === 'InvalidToken' || data.responseText === 'InvalidToken') {
             self.updateView('showHome');
           } else {
-            console.log('this is the data:', data);
             if (data.username) {
               self.updateView('showProfile', data.username);
             }
@@ -69,11 +68,9 @@ class Main extends React.Component {
         self.setState({showProfile: true});
         if (data.loginMessage === ''){
           self.setState({showModal:false});
-          console.log('NOT showing login modal');
         }
         else if (data.loginMessage === 'wish fulfilled'){
           self.setState({showModal:true});
-          console.log('showing login modal');
           $.ajax({
             url: '/emptyLoginMessage',
             data: JSON.stringify(data),
@@ -108,8 +105,7 @@ class Main extends React.Component {
           {this.state.showModal ? (
             <LoginModal
             showModal={this.state.showModal}
-            close={this.close}/>
-          ):null}
+            close={this.close}/>) : null}
           {this.state.showProfile ? <Profile updateView={this.updateView} userInfo={this.state.userInfo} isLoggedIn={this.state.isLoggedIn} /> : null}
           {this.state.showPublicProfile ? <PublicProfile updateView={this.updateView} /> : null}
         </div>

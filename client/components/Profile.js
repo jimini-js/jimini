@@ -31,7 +31,6 @@ class Profile extends React.Component {
           username: self.props.userInfo.username,
           wishlist: data
         });
-        console.log("WISHLIST DATA:", self.state.wishlist);
       },
       error: function(err){
         console.log('error:', err);
@@ -71,12 +70,6 @@ class Profile extends React.Component {
     localStorage.token='';
     this.props.updateView('showHome');
   }
-
-  // close(){
-  //   this.setState({
-  //     showModal: false
-  //   })
-  // }
 
   render(){
     let userName = this.state.username;

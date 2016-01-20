@@ -41,7 +41,6 @@ class ItemForm extends React.Component {
     let itemname = this.itemnameRef.value;
     let category = this.categoryRef;
     let url = this.urlRef.value;
-    console.log('substring',url.substring(0,5));
     if (url.substring(0,4)!=='http'){
       url='http://'+url;
     }
@@ -62,7 +61,6 @@ class ItemForm extends React.Component {
       }),
       success: function(data){
         self.props.updateWishlist('add', data);
-        console.log('********/wishlist post:', data);
       },
       error: function(err){
         console.log('error posting to wishlist: ', err);

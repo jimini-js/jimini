@@ -1,9 +1,7 @@
 import React from 'react';
 import Item from './Item.js';
 import $ from 'jquery';
-//import { Dropdown } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
-//import { DropdownMenu } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 
 class Wishlist extends React.Component {
@@ -27,7 +25,6 @@ class Wishlist extends React.Component {
   }
 
   removeWish(wishId){
-
     let self =  this;
 
     $.ajax({
@@ -38,7 +35,6 @@ class Wishlist extends React.Component {
         id: wishId
       }),
       success: function(data){
-        console.log('success deletion', data);
         self.props.updateWishlist('delete', wishId);
       },
       error: function(err){
@@ -52,7 +48,7 @@ class Wishlist extends React.Component {
     let newWishList = [];
 
     this.state.wishlist.forEach(wish => {
-      if(wish._id !== wishId){
+      if (wish._id !== wishId) {
         newWishList.push(wish);
       }
     });
@@ -71,7 +67,6 @@ class Wishlist extends React.Component {
         message: message
       }),
       success: function(data){
-        console.log('success bought', data);
       },
       error: function(err){
         console.log('buying error', err);
@@ -100,23 +95,23 @@ class Wishlist extends React.Component {
     let title;
 
     let dropdown = this.props.isLoggedIn?(
-      <DropdownButton title={this.state.show}>
+      <DropdownButton title={this.state.show} id='purchasedDropdown'>
         <MenuItem onClick={this.showAll}>All</MenuItem>
         <MenuItem onClick={this.showPurchased}>Purchased</MenuItem>
         <MenuItem onClick={this.showUnpurchased}>Not Purchased</MenuItem>
       </DropdownButton>
       ):null;
 
-    if(this.props.isLoggedIn){
-      if (this.state.show==='All'){
+    if (this.props.isLoggedIn) {
+      if (this.state.show==='All') {
         items = this.state.wishlist;
       }
-      else if (this.state.show==='Purchased'){
+      else if (this.state.show==='Purchased') {
         items = this.state.wishlist.filter(function(item){
           return (item.purchased)
         });
       }
-      else if (this.state.show==='Not Purchased'){
+      else if (this.state.show==='Not Purchased') {
         items = this.state.wishlist.filter(function(item){
           return (!item.purchased);
         });

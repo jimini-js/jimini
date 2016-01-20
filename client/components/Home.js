@@ -14,13 +14,13 @@ class Home extends React.Component {
   handleClick(){
     this.setState({
       renderLogin: !this.state.renderLogin
-    })
+    });
   }
 
   render(){
     let viewBox;
 
-    if(this.state.renderLogin){
+    if (this.state.renderLogin) {
       viewBox = <Login updateView={this.props.updateView} handleClick={this.handleClick} />
     } else {
       viewBox = <Signup updateView={this.props.updateView} handleClick={this.handleClick} />
