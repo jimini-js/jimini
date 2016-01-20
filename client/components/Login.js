@@ -70,6 +70,8 @@ class Login extends React.Component {
             <div className="form-group col-sm-10 col-md-push-1">
               <button type="submit" className="btn btn-block">Log in</button>
               <div onClick={this.props.handleClick}>Don't have an account? Click <a>here</a> to sign up.</div>
+              <br></br>
+              <div>Looking for a friend's wishlist? Click <a href={document.URL+'/search'}>here</a> to search for a user.</div>
             </div>
           </form>
         </div>
