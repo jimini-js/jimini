@@ -14,7 +14,6 @@ class PurchaseConfirmation extends React.Component {
   }
 
   render(){
-    console.log(this.props.giftIcon)
     return (
       <Modal show={this.props.showModal} onHide={this.props.close}>
         <Modal.Header closeButton>

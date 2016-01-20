@@ -46,12 +46,10 @@ class Signup extends React.Component {
         email: email
       }),
       success: function(data){
-        if(data.name === 'ValidationError'){
+        if (data.name === 'ValidationError') {
           self.handleData('showHome');
         } else {
-          console.log('this is the data:', data);
           localStorage.token = data.token;
-          console.log('this is the localStorage.token: ', localStorage.token);
           self.handleData('showProfile', data);
         }
       },

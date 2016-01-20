@@ -35,10 +35,8 @@ class Item extends React.Component {
 
   handleBought(){
     let wishId = this.props.id;
-    console.log('wishId',wishId);
     let name = $('#name'+wishId).val();
     let message = $('#message'+wishId).val();
-    console.log(name, message);
 
     this.props.markAsBought(wishId,name,message);
 
@@ -108,8 +106,6 @@ class Item extends React.Component {
         </div>
       )
     }
-
-    console.log("icons in items", this.props.giftIcon)
 
     return (
       <div>

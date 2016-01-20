@@ -11,14 +11,13 @@ class PublicProfile extends React.Component {
     this.state = {
       username: '',
       wishlist: []
-      // giftIcon: {}
     }
   }
 
   componentWillMount(){
     let self = this;
 
-    if(this.props.params !== 'search'){
+    if (this.props.params !== 'search') {
       $.ajax({
         url: '/allwishes',
         type: 'GET',
@@ -26,7 +25,6 @@ class PublicProfile extends React.Component {
           username: self.props.params.username
         },
         success: function(data){
-          console.log('public profile data', data);
           self.setState({
             username: self.props.params.username,
             wishlist: data
@@ -37,21 +35,6 @@ class PublicProfile extends React.Component {
         }
       });
     }
-
-    // $.ajax({
-    //   url: '/confirmation',
-    //   type: 'GET',
-    //   contentType: 'application/json',
-    //   success: function(data){
-    //     self.setState({
-    //       giftIcon: data
-    //     });
-    //   },
-    //   error: function(err){
-    //     console.log('error', err);
-    //   }
-    // });
-
   }
 
   getUsernameRef(ref){
@@ -59,7 +42,6 @@ class PublicProfile extends React.Component {
   }
 
   fetchData(e){
-    console.log('inside fetchData');
     e.preventDefault();
     let self = this;
     let user = this.usernameRef.value;
@@ -71,7 +53,6 @@ class PublicProfile extends React.Component {
         username: user
       },
       success: function(data){
-        console.log('public profile data', data);
         self.setState({
           username: user,
           wishlist: data
