@@ -95,7 +95,7 @@ class Wishlist extends React.Component {
     let title;
 
     let dropdown = this.props.isLoggedIn?(
-      <DropdownButton title={this.state.show}>
+      <DropdownButton title={this.state.show} id='purchasedDropdown'>
         <MenuItem onClick={this.showAll}>All</MenuItem>
         <MenuItem onClick={this.showPurchased}>Purchased</MenuItem>
         <MenuItem onClick={this.showUnpurchased}>Not Purchased</MenuItem>
