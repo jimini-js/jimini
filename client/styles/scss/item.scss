@@ -1,0 +1,63 @@
+.item {
+  border:1px solid #ababab;
+  background-color: $white-color;
+  border-radius:5px;
+  height: 270px;
+  overflow: auto;
+  margin-right: 20px;
+  margin-top: 25px;
+
+  button,
+  button:hover {
+    display: block;
+    background-color: $med-accent-color;
+    border-color:#fff;
+  }
+
+  .purchase,
+  .purchase:hover {
+    background-color: $med-accent-color;
+    float: right;
+    margin-right: 25px;
+  }
+
+  img {
+    display: inline-block;
+    margin:20px;
+    width:20%;
+    height:auto;
+  }
+  .single-item-description {
+    display: inline-block;
+    width:60%;
+    margin-top:10px;
+  }
+
+  h4 {
+    font-family: $font-accent;
+    font-size:24px;
+    text-align: center;
+    font-weight:bold;
+  }
+
+  h5 {
+    font-size:18px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  a {
+    display: relative;
+    float:right;
+    bottom: 0;
+  }
+}
+
+.item-purchase {
+  max-width: 90%;
+  height: 190px;
+}

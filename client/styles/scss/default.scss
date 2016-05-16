@@ -1,0 +1,19 @@
+
+$light-bg-color: #FAFAFA;
+$white-color: #FFF;
+$light-border-color: #edeeee;
+$med-accent-color: #ffbf43;
+
+
+html {
+  box-sizing: border-box;
+  background-color: $light-bg-color;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+button {
+  background-color:$med-accent-color;
+}
